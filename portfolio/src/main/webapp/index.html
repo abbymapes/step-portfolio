@@ -8,30 +8,43 @@
   </head>
   <body>
     <div id="content">
-      <div id="heading"> <h1>Abby's Portfolio</h1></div>
-      <p>Welcome to my first portfolio! It's a pleasure to have you here!</p>
-      <div id="prompts"> <p> First and foremorest, I'd like to say...</p></div>
-      <button onclick="addRandomGreeting()">Click me!</button>
-      <div id="greeting-container"></div>
+      <div id="heading"><h1>Abby's Portfolio</h1></div>
+      <p>Welcome to my portfolio! It's a pleasure to have you here!</p>
 
-      <p>Now, a little bit about me!</p>
+      <div id = "abheading"><h2>About Me</h2></div>
 
-      <div id="prompts"><p>I was born and raised in </p></div>
-      <img src="/images/losangeles.png" width="650 px"/>
+      <div id="prompts">
+        <div id="duke"><p>I am an incoming Junior at 
+            <img src="/images/duke.png" width="650px"/></p>
+            
+        <p>I am pursuing a B.S. in Computer Science and a certificate in 
+            <a href = "https://iss.duke.edu/undergraduate-certificate">Information Science + Studies</a>.</p></div>
+              
+        <div id="losangeles"><p>I was born and raised in 
+            <img src="/images/losangeles.png" width="650 px"/></p></div>
 
-      <div id="prompts"> <p>I am an incoming Junior at </p></div>
-      <img src="/images/duke.png" width="650px"/>
+        <div id="google"><p> I am currently interning at <br>
+            <img src="/images/google.gif" height="400 px" width="400 px"/> </p></div>
 
-      <div id="prompts"> <p> And these are my co-workers for the summer... </p></div>
-      <img src="/images/dogs.png" width="650px"/>
-      
-      <div id="prompts"> <p> Want to know more?</p></div>
-      <button onclick="addRandomFact()">Random Abby Fact</button>
-      <div id="fact-container"></div>
+        <div id="happy"><p>The beach, creating art, hiking, playing the guitar, musicals, and my dogs make me happy. 
+            <img src="/images/dogs.png" width="650 px"/></p>
 
-      <div id="prompts"><p>And now, sadly, it's time to say...</p></div>
-      <button onclick="addRandomGoodbye()">Click me!</button>
-      <div id="goodbye-container"></div>
+        <div id = "buttoncenter"><p><button onclick="addRandomSong()">My Favorite Guitar Songs</button>
+            <div id="song-container"></div></p></div>
+
+        <div id = "buttoncenter"><p><button onclick="addRandomMusical()">My Favorite Musicals</button>
+            <div id="musical-container"></div></p></div>
+
+        <p><a href="images.html">These places</a> make me happy.</p></div>
+
+      <div id="socials"><p>Want to learn more? Check out my:</p>
+      <a href = "https://www.linkedin.com/in/abbymapes"><img src = "/images/linkedin.png" width = "100 px"/></a>
+      <br>
+      <a href = "https://github.com/abbymapes"><img src = "/images/git.png" width = "100 px"/> </a></div>
+
+      <div id="prompts"><p>Sadly, it is time to say:</p></div>
+      <div id = "buttoncenter"><button onclick="addRandomGoodbye()">Click me!</button>
+      <div id="goodbye-container"></div></div>
     </div>
   </body>
 </html>
