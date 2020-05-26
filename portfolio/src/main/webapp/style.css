@@ -1,9 +1,37 @@
+#heading {
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  background-color: lightcyan
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
+  background-color: lightgoldenrodyellow
+}
+
+
+#prompts {
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  background-color: lightpink
 }
 
 #greeting-container {
   margin-top: 20px;
+  background-color: lightgreen;
+}
+
+#fact-container {
+  margin-top: 20px;
+  background-color: orange;
+}
+
+
+#goodbye-container {
+  margin-top: 20px;
+  background-color: plum;
 }

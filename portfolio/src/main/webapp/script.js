@@ -17,7 +17,7 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!', '¡Ciao!'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -25,4 +25,37 @@ function addRandomGreeting() {
   // Add it to the page.
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
+}
+
+/**
+ * Adds a random greeting to the page.
+ */
+function addRandomFact() {
+  const facts =
+      ['I have one brother', 
+      'I hate the taste of mint leaves, but mint ice cream', 
+      'I love Greys Anatomy', 'I love country music'];
+
+  // Pick a random fact.
+  const fact = facts[Math.floor(Math.random() * facts.length)];
+
+  // Add it to the page.
+  const factContainer = document.getElementById('fact-container');
+  factContainer.innerText = fact;
+}
+
+
+/**
+ * Adds a random goodbye to the page.
+ */
+function addRandomGoodbye() {
+  const goodbyes =
+      ['Goodbye!', '¡Adiós!', '再见！', 'Au revoir!', '¡Ciao!'];
+
+  // Pick a random goodbye.
+  const goodbye = goodbyes[Math.floor(Math.random() * goodbyes.length)];
+
+  // Add it to the page.
+  const goodbyeContainer = document.getElementById('goodbye-container');
+  goodbyeContainer.innerText = goodbye;
 }
