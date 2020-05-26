@@ -28,20 +28,39 @@ function addRandomGreeting() {
 }
 
 /**
- * Adds a random greeting to the page.
+ * Adds a random song to the page.
  */
-function addRandomFact() {
-  const facts =
-      ['I have one brother', 
-      'I hate the taste of mint leaves, but mint ice cream', 
-      'I love Greys Anatomy', 'I love country music'];
+function addRandomSong() {
+  const songs =
+      ['Hey Jude', 
+      'First Day of My Life', 
+      'Perfect', 'Youth', 'Brown-Eyed Girl',
+      'You and I', 'Drops of Jupiter'];
 
   // Pick a random fact.
-  const fact = facts[Math.floor(Math.random() * facts.length)];
+  const song = songs[Math.floor(Math.random() * songs.length)];
 
   // Add it to the page.
-  const factContainer = document.getElementById('fact-container');
-  factContainer.innerText = fact;
+  const songContainer = document.getElementById('song-container');
+  songContainer.innerText = song;
+}
+
+/**
+ * Adds a random song to the page.
+ */
+function addRandomMusical() {
+  const musicals =
+      ['Hamilton', 
+      'Les Misérables', 
+      'Wicked', 'Grease', 'Phantom of the Opera',
+      'Jersey Boys'];
+
+  // Pick a random fact.
+  const musical = musicals[Math.floor(Math.random() * musicals.length)];
+
+  // Add it to the page.
+  const musicalContainer = document.getElementById('musical-container');
+  musicalContainer.innerText = musical;
 }
 
 
