@@ -8,11 +8,30 @@
   </head>
   <body>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
+      <div id="heading"> <h1>Abby's Portfolio</h1></div>
+      <p>Welcome to my first portfolio! It's a pleasure to have you here!</p>
+      <div id="prompts"> <p> First and foremorest, I'd like to say...</p></div>
+      <button onclick="addRandomGreeting()">Click me!</button>
       <div id="greeting-container"></div>
+
+      <p>Now, a little bit about me!</p>
+
+      <div id="prompts"><p>I was born and raised in </p></div>
+      <img src="/images/losangeles.png" width="650 px"/>
+
+      <div id="prompts"> <p>I am an incoming Junior at </p></div>
+      <img src="/images/duke.png" width="650px"/>
+
+      <div id="prompts"> <p> And these are my co-workers for the summer... </p></div>
+      <img src="/images/dogs.png" width="650px"/>
+      
+      <div id="prompts"> <p> Want to know more?</p></div>
+      <button onclick="addRandomFact()">Random Abby Fact</button>
+      <div id="fact-container"></div>
+
+      <div id="prompts"><p>And now, sadly, it's time to say...</p></div>
+      <button onclick="addRandomGoodbye()">Click me!</button>
+      <div id="goodbye-container"></div>
     </div>
   </body>
 </html>
