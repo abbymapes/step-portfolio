@@ -9,42 +9,88 @@
   <body>
     <div id="content">
       <div id="heading"><h1>Abby's Portfolio</h1></div>
-      <p>Welcome to my portfolio! It's a pleasure to have you here!</p>
 
-      <div id = "abheading"><h2>About Me</h2></div>
+        <div id = "center">
+          <p>Welcome to my portfolio! It's a pleasure to have you here!</p>
+          <p>Don't like this color?</p>
+          <button onclick="setBackgroundColor()">Click Me!</button>
+        </div>
 
-      <div id="prompts">
-        <div id="duke"><p>I am an incoming Junior at 
-            <img src="/images/duke.png" width="650px"/></p>
-            
-        <p>I am pursuing a B.S. in Computer Science and a certificate in 
-            <a href = "https://iss.duke.edu/undergraduate-certificate">Information Science + Studies</a>.</p></div>
+      <div id = "section-title"><h2>About Me</h2></div>
+
+        <div id="sect-1">
+          <p>I am an incoming Junior at Duke University. I am pursuing a B.S. 
+              in Computer Science and a certificate in 
+              <a href = "https://iss.duke.edu/undergraduate-certificate">Information 
+              Science + Studies</a>.<br>
+            <img src="/images/duke.png" alt = "Duke Logo." width="650px"/></p>  
+
+          <div id = "center"><h3>My Coding Languages</h3>
+            <p><b>Expert:</b> Java, Python, C</p>
+            <p><b>Proficient:</b> HTML/CSS, SQL, MIPS, R</p>
+          </div>
+        </div>
               
-        <div id="losangeles"><p>I was born and raised in 
-            <img src="/images/losangeles.png" width="650 px"/></p></div>
+        <div id="sect-2">
+          <p>I was born and raised in Los Angeles.<br>
+            <img src="/images/losangeles.png" alt = "Picture of Los Angeles." 
+            width="650 px"/></p>
+        </div>
 
-        <div id="google"><p> I am currently interning at <br>
-            <img src="/images/google.gif" height="400 px" width="400 px"/> </p></div>
+        <div id="sect-3">
+          <p> I am currently a STEP intern 
+            (Student Training in Engineering Program) at Google. <br>
+            <img src="/images/google.gif" alt = "Google gif." 
+            height="200 px" width="200 px"/></p>
+        </div>
 
-        <div id="happy"><p>The beach, creating art, hiking, playing the guitar, musicals, and my dogs make me happy. 
-            <img src="/images/dogs.png" width="650 px"/></p>
+        <div id="sect-4">
+          <div id = "center">
+            <h3>What makes me happy?</h3>
 
-        <div id = "buttoncenter"><p><button onclick="addRandomSong()">My Favorite Guitar Songs</button>
-            <div id="song-container"></div></p></div>
+            <p>Playing the guitar.</p>
+              <p><button onclick="addRandomSong()">My Favorite Songs to Play</button>
+                <div id="song-container"></div></p>
+          
+            <p>My Dogs.</p>
+              <img src="/images/dogs.png" alt = "Picture of my Dogs." width="650 px"/></p>
 
-        <div id = "buttoncenter"><p><button onclick="addRandomMusical()">My Favorite Musicals</button>
-            <div id="musical-container"></div></p></div>
+            <p>Making art.</p>
+              <p><button onclick="document.location = 'artimages.html'">Some of my Art</button></p>
 
-        <p><a href="images.html">These places</a> make me happy.</p></div>
+            <p>Musicals.</p>
+                <p><button onclick="addRandomMusical()">My Favorite Musicals</button>
+                  <div id="musical-container"></div></p>
+        
+            <p>Hiking, exploring, looking at, and traveling the world. </p>
+              <p><button onclick="document.location = 'images.html'">My Happy Places</button></p>
+          </div>
+        </div>
 
-      <div id="socials"><p>Want to learn more? Check out my:</p>
-      <a href = "https://www.linkedin.com/in/abbymapes"><img src = "/images/linkedin.png" width = "100 px"/></a>
-      <br>
-      <a href = "https://github.com/abbymapes"><img src = "/images/git.png" width = "100 px"/> </a></div>
+        <div id="sect-5">
+          <div id = "center"><h2>Want to learn more?</h2></div>
+          <p>Check out my:</p>
+            <div id = "center">
+              <a href = "https://www.linkedin.com/in/abbymapes"><h3>LinkedIn</h3></a>
+            </div>
+              <a href = "https://www.linkedin.com/in/abbymapes">
+                <img src = "/images/linkedin.png" alt = "LinkedIn Logo." 
+                width = "100 px"/></a>
+            <br>
+            <div id = "center">
+              <a href = "https://github.com/abbymapes"><h3>GitHub</h3></a>
+            </div>
+              <a href = "https://github.com/abbymapes">
+                <img src = "/images/git.png" alt = "GitHub Logo." 
+                width = "100 px"/></a>
+        </div>
+    
 
-      <div id="prompts"><p>Sadly, it is time to say:</p></div>
-      <div id = "buttoncenter"><button onclick="addRandomGoodbye()">Click me!</button>
-      <div id="goodbye-container"></div></div>
+      <p>I hope you enjoyed learning a little more about me! Sadly, it is time to say:</p>
+        <div id = "center">
+          <p><button onclick="addRandomGoodbye()">Click me!</button>
+            <div id="goodbye-container"></div></p>
+        </div>
     </div>
   </body>
 </html>

@@ -4,23 +4,7 @@ img {
   margin-right: auto;
 }
 
-#buttoncenter {
-  text-align : center;
-}
-
-#heading {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-  background-color: rgb(255, 255, 255);
-  text-align : center;
-}
-
-#abheading {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-  background-color: rgb(255, 224, 251);
+#center {
   text-align : center;
 }
 
@@ -28,69 +12,77 @@ img {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(255, 255, 241);
+  background-color: hsl(60, 100%, 95%);
 }
 
-#duke {
+button{
+  background-color: hsl(0, 0%, 100%);
+}
+
+#heading {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(226, 255, 224);
+  background-color: hsl(60, 100%, 65%);
+  text-align : center;
 }
 
-#losangeles {
+#section-title {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(255, 219, 241);
+  background-color: hsl(60, 100%, 65%);
+  text-align : center;
 }
 
-#google {
+#sect-1 {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(255, 232, 205);
+  background-color: hsl(60, 100%, 90%);
 }
 
-#happy {
+#sect-2 {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(230, 205, 253);
+  background-color: hsl(60, 100%, 85%);
 }
 
-#socials {
+#sect-3 {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(198, 228, 255);
+  background-color: hsl(60, 100%, 80%);
 }
 
-#prompts {
+#sect-4 {
   margin-left: auto;
   margin-right: auto;
   width: 650px;
-  background-color: rgb(255, 255, 241);
+  background-color: hsl(60, 100%, 75%);
 }
 
-#greeting-container {
-  margin-top: 20px;
-  background-color: rgb(255, 255, 151);
+#sect-5 {
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  background-color: hsl(60, 100%, 70%);
 }
 
 #song-container {
   margin-top: 20px;
-  background-color:rgb(255, 198, 246);
+  background-color: hsl(60, 100%, 95%);
 }
 
 #musical-container {
   margin-top: 20px;
-  background-color:rgb(255, 198, 246);
+  background-color: hsl(60, 100%, 95%);
 }
 
 #goodbye-container {
   margin-top: 20px;
-  background-color: rgb(202, 255, 189);
+  background-color: hsl(60, 100%, 65%);
 }
 
 .image-thumbnails {
@@ -101,15 +93,25 @@ img {
 
 .image-thumbnails img {
   margin: 10px;
-  max-height: 200px;
-  max-width: 200px;
+  max-height: 250px;
+  max-width: 250px;
 }
 
 .image-thumbnails img:hover {
-  border: thick solid rgb(255, 255, 255);
+  border: thick solid hsl(0, 0%, 0%);
 }
 
-#random-image-container img {
-  margin-top: 20px;
-  background-color: lightgoldenrodyellow;
+#img-heading {
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  background-color: hsl(288, 100%, 96%);
+  text-align : center;
+}
+
+#img-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 650px;
+  background-color: hsl(0, 0%, 100%);
 }
