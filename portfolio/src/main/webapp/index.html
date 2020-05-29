@@ -1,18 +1,141 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
-  </body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Portfolio</title>
+        <link rel="stylesheet" href="style.css">
+        <link href='https://fonts.googleapis.com/css?family=GFS Neohellenic' rel='stylesheet'>
+        <script src="script.js"></script>
+    </head>
+
+    <body>
+        <div id = "content">
+            <div class="grid-overall-container">
+
+                <div class="left"></div>
+
+                <div class="center">
+                    <div class="header rainbow-text"><h1>Abby's Portfolio</h1></div>
+
+                    <div class="grid-container">
+                        <div class="intro">
+                            <div id = "sect-0">
+                                <p>Welcome to my portfolio! It's a pleasure to have you here!</p>
+                                <p>Don't like this color?</p>
+                                <button onclick="setBackgroundColor()" class="rainbow-text">Click Me!</button>
+                            </div>
+                        </div>
+
+                        <div class="aboutme rainbow-text">
+                            <div id = "section-title"><h2>About Me</h2></div></div>  
+
+                        <div class="sect-1">
+                            <div id="sect-1">
+                                <p>I am an incoming Junior at Duke University. I am pursuing a 
+                                <abbr title="Bachelor of Science Degree">B.S.</abbr> 
+                                in Computer Science and a certificate in 
+                                <a href = "https://iss.duke.edu/undergraduate-certificate"
+                                target="_blank">Information 
+                                Science + Studies</a>.<br>
+                                <img src="/images/duke.png" alt = "Duke Logo."/></p>  
+
+                                <h3 class = "rainbow-text">Coding Languages</h3>
+                                <p><b>Expert:</b> Java, Python, C</p>
+                                <p><b>Proficient:</b> HTML/CSS, SQL, MIPS, R</p>
+                            </div>
+                        </div>
+
+                        <div class="sect-2">
+                            <div id="sect-2">
+                                <p>I was born and raised in Los Angeles.<br>
+                                <img src="/images/losangeles.png" alt = "Picture of Los Angeles." /></p>
+                            </div>
+                        </div>
+
+                        <div class="sect-3">
+                            <div id="sect-3">
+                                <p> I am currently a <abbr title="Student Training in Engineering Program">
+                                STEP</abbr>  intern at Google. <br>
+                                <img src="/images/google.gif" alt = "Google gif." /></p>
+                            </div>
+                        </div>
+
+                        <div class="title rainbow-text">
+                            <h3 style = "font-size: 25px">Things That Make Me Happy</h3>
+                        </div>
+
+                        <div class="sect-4">
+                            <div id="sect-4"><p>My Dogs.</p>
+                                <img src="/images/dogs.png" alt = "Picture of my Dogs."/>
+                            </div>  
+                        </div>
+
+                        <div class="sect-5">
+                            <div id="sect-5">
+                                <p>Playing the guitar.</p>
+                                <p><button onclick="addRandomSong()">My Favorite Songs to Play</button>
+                                <div id="song-container" class="rainbow-text"></div></p>
+                    
+                                <p>Musicals.</p>
+                                <p><button onclick="addRandomMusical()">My Favorite Musicals</button>
+                                <div id="musical-container" class="rainbow-text"></div></p>
+                            </div>
+                        </div>
+
+                        <div class="sect-6">
+                            <div id="sect-6">
+                                <p>Making art.</p>
+                                <p><button onclick="document.location = 'artimages.html'" 
+                                           class="rainbow-text">
+                                           Some of my Art</button></p>
+                                <p>Hiking, exploring, looking at, and traveling the world. </p>
+                                <p><button onclick="document.location = 'images.html'" 
+                                           class="rainbow-text">
+                                           My Happy Places</button></p>
+                            </div> 
+                        </div>
+
+                        <div class = "more rainbow-text">
+                            <div id = "section-title">
+                                <h2>Want to learn more?</h2>
+                            </div>
+                        </div>
+
+                        <div class="sect-7">
+                            <div id = "sect-7">
+                                <p>Check out my:</p>
+                                <div id = "l-logo">
+                                  <a href = "https://www.linkedin.com/in/abbymapes" target="_blank">
+                                  <img src = "/images/linkedin.png" alt = "LinkedIn Logo." 
+                                    width = "100 px"/></a>
+                                </div>
+                                <br>
+                                <div id = "g-logo">
+                                  <a href = "https://github.com/abbymapes" target="_blank">
+                                  <img src = "/images/git.png" alt = "GitHub Logo." 
+                                    width = "100 px"/></a>
+                                </div>
+                                <br>
+                            </div>
+                        </div>
+
+                        <div class="goodbye">
+                            <p>I hope you enjoyed learning a little more about 
+                            me! Sadly, it is time to say:</p>
+                            <p><button onclick="addRandomGoodbye()">Click me!</button>
+                            <div id="goodbye-container" class="rainbow-text"></div></p>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="bottom rainbow-text">
+                        <h1> </h1>
+                    </div>
+                </div>
+
+                <div class = "left"></div>
+            </div>
+        </div>
+    </body>
+  </html>
