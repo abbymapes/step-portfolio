@@ -85,7 +85,6 @@ function addRandomGoodbye() {
  */
 function setBackgroundColor(){
   const hue_number = (Math.floor(Math.random() * 35) + 1) * 10;
-
   const intro = document.getElementsByClassName("intro");
   const sect1 = document.getElementsByClassName("sect-1");
   const sect2 = document.getElementsByClassName("sect-2");
