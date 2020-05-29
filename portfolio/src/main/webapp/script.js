@@ -85,28 +85,27 @@ function addRandomGoodbye() {
  */
 function setBackgroundColor(){
   const hue_number = (Math.floor(Math.random() * 35) + 1) * 10;
-
+  const intro = document.getElementsByClassName("intro");
+  const sect1 = document.getElementsByClassName("sect-1");
+  const sect2 = document.getElementsByClassName("sect-2");
+  const sect3 = document.getElementsByClassName("sect-3");
+  const sect4 = document.getElementsByClassName("sect-4");
+  const sect5 = document.getElementsByClassName("sect-5");
+  const sect6 = document.getElementsByClassName("sect-6");
+  const sect7 = document.getElementsByClassName("sect-7");
+  const goodbye = document.getElementsByClassName("goodbye");
+  const grid = document.getElementsByClassName("grid-container");
   const content = document.getElementById("content");
-  const songcont = document.getElementById("song-container");
-  const musicalcont = document.getElementById("musical-container");
-  const sect1 = document.getElementById("sect-1");
-  const sect2 = document.getElementById("sect-2");
-  const sect3 = document.getElementById("sect-3");
-  const sect4 = document.getElementById("sect-4");
-  const sect5 = document.getElementById("sect-5");
-  const heading = document.getElementById("heading");
-  const secttitle = document.getElementById("section-title");
-  const goodbyecont = document.getElementById("goodbye-container");
 
   content.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
-  songcont.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
-  musicalcont.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
-  sect1.style.backgroundColor = "hsl("+ hue_number + ", 100%, 90%)";
-  sect2.style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
-  sect3.style.backgroundColor = "hsl("+ hue_number + ", 100%, 80%)";
-  sect4.style.backgroundColor = "hsl("+ hue_number + ", 100%, 75%)";
-  sect5.style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
-  heading.style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
-  secttitle.style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
-  goodbyecont.style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
+  intro[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
+  goodbye[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
+  grid[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
+  sect1[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 90%)";
+  sect2[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
+  sect3[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
+  sect4[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 75%)";
+  sect5[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
+  sect6[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
+  sect7[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
 }

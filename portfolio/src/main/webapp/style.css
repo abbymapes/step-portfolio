@@ -1,88 +1,292 @@
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="grid-container"] {
+    display: grid;
+    grid-template-areas:
+    'intro'
+    'title'
+    'school'
+    'home'
+    'work'
+    'fun'
+    'dogs'
+    'song'
+    'art'
+    'more'
+    'social'
+    'footer'
+    'bottom';
+    grid-gap: 10px;
+    background-color: hsl(210, 100%, 95%);
+    padding: 10px;
+    align-content: center;
+    justify-content: center;
+  }
+}
+
+.intro { 
+  grid-area: intro; 
+  background-color:hsl(210, 100%, 95%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.aboutme { 
+  grid-area: title;
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-1 { 
+  grid-area: school; 
+  background-color: hsl(210, 100%, 90%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-2 { 
+  grid-area: home; 
+  background-color: hsl(210, 100%, 85%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-3 { 
+  grid-area: work; 
+  background-color: hsl(210, 100%, 85%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.title { 
+  grid-area: fun; 
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-4 { grid-area: dogs; 
+  background-color: hsl(210, 100%, 80%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-5 { grid-area: song; 
+  background-color: hsl(210, 100%, 70%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-6 { 
+  grid-area: art; 
+  background-color: hsl(210, 100%, 70%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.more { 
+  grid-area: more; 
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.sect-7 {
+  grid-area: social; 
+  background-color: hsl(210
+  , 100%, 65%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.goodbye { 
+  grid-area: footer; 
+  background-color: hsl(210, 100%, 95%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);}
+
+.left {grid-area: left}
+.center {
+  grid-area: middle;
+  max-width: 650px;}
+
+.grid-overall-container{
+  display: grid;
+  grid-template-areas: 'left middle left';
+  padding: 10px;
+  align-content: center;
+  justify-content: center;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'intro intro'
+    'title title'
+    'school school'
+    'home work'
+    'fun fun'
+    'dogs dogs'
+    'song art'
+    'more more'
+    'social social'
+    'footer footer';
+  grid-gap: 10px;
+  background-color: hsl(210, 100%, 95%);
+  padding: 10px;
+  align-content: center;
+  justify-content: center;
+}
+
+.grid-container > div {
+  text-align: center;
+  padding: 5px 0;
+  align-items: center;
+}
+
+.grid-overall-container > div {
+  text-align: center;
+  padding: 5px 0;
+  align-items: center;
+}
+
+.rainbow-text {
+  background-image: linear-gradient(to left, hsl(300, 100%, 90%),
+                                            hsl(250, 100%, 90%),
+                                            hsl(200, 100%, 90%),
+                                            hsl(150, 100%, 90%),
+                                            hsl(100, 100%, 90%),
+                                            hsl(50, 100%, 90%),
+                                            hsl(25, 100%, 90%),
+                                            hsl(25, 100%, 90%));
+  font-family: 'GFS Neohellenic';
+}
+
+.center {
+  text-align : center;
+}
+
+.header {
+  text-align : center;
+  font-family: 'GFS Neohellenic';
+  font-size: 20px;
+  color: black;
+  padding: 10px;
+}
+
+.bottom {
+  text-align : center;
+  font-family: 'GFS Neohellenic';
+  font-size: 20px;
+  padding: 10px;
+}
+
 img {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-#center {
-  text-align : center;
-}
-
-#content {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 95%);
+  height: auto;
+  max-width: 75%;
 }
 
 button{
   background-color: hsl(0, 0%, 100%);
+  font-family: 'GFS Neohellenic';
+  font-size: 12px;
 }
 
-#heading {
-  margin-left: auto;
-  margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 65%);
-  text-align : center;
+#content {
+  font-family: 'GFS Neohellenic';
+  background-color: hsl(210, 100%, 95%);
 }
 
-#section-title {
+#sect-0 {
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 65%);
-  text-align : center;
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
 
 #sect-1 {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 90%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
 
 #sect-2 {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 85%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
 
 #sect-3 {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 80%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
 
 #sect-4 {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 75%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
-
 #sect-5 {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
-  background-color: hsl(60, 100%, 70%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
+}
+#sect-6 {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
+}
+
+#sect-7 {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
+  text-align : center;
 }
 
 #song-container {
   margin-top: 20px;
-  background-color: hsl(60, 100%, 95%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
 
 #musical-container {
   margin-top: 20px;
-  background-color: hsl(60, 100%, 95%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
 }
 
 #goodbye-container {
   margin-top: 20px;
-  background-color: hsl(60, 100%, 65%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
+}
+
+#l-logo{}
+
+#g-logo{}
+
+#l-logo:hover{
+  transform: scale(1.1);
+}
+
+#g-logo:hover{
+  transform: scale(1.1);
+}
+
+[class*="sect"]:hover {
+  transform: scale(1.03);
+}
+
+button:hover {
+  border: solid white;
+}
+
+.intro:hover {
+  transform: scale(1.03);
+}
+
+.goodbye:hover {
+  transform: scale(1.03);
 }
 
 .image-thumbnails {
@@ -93,12 +297,12 @@ button{
 
 .image-thumbnails img {
   margin: 10px;
-  max-height: 250px;
-  max-width: 250px;
+  max-height: 200px;
+  max-width: 200px;
 }
 
 .image-thumbnails img:hover {
-  border: thick solid hsl(0, 0%, 0%);
+  border: thick solid black;
 }
 
 #img-heading {
@@ -107,11 +311,18 @@ button{
   width: 650px;
   background-color: hsl(288, 100%, 96%);
   text-align : center;
+  font-family: 'GFS Neohellenic';
+  font-size: 18px;
+  color: white;
+  -webkit-text-stroke-width: .75px;
+  -webkit-text-stroke-color: black;
 }
 
 #img-content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
   background-color: hsl(0, 0%, 100%);
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
+  max-width: 650px;
 }
