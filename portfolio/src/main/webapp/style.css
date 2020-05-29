@@ -261,6 +261,34 @@ button{
   font-size: 16px;
 }
 
+#l-logo{}
+
+#g-logo{}
+
+#l-logo:hover{
+  transform: scale(1.1);
+}
+
+#g-logo:hover{
+  transform: scale(1.1);
+}
+
+[class*="sect"]:hover {
+  transform: scale(1.03);
+}
+
+button:hover {
+  border: solid white;
+}
+
+.intro:hover {
+  transform: scale(1.03);
+}
+
+.goodbye:hover {
+  transform: scale(1.03);
+}
+
 .image-thumbnails {
   display: flex;
   flex-wrap: wrap;
@@ -269,8 +297,8 @@ button{
 
 .image-thumbnails img {
   margin: 10px;
-  max-height: 50%;
-  max-width: 50%;
+  max-height: 200px;
+  max-width: 200px;
 }
 
 .image-thumbnails img:hover {
@@ -296,4 +324,5 @@ button{
   background-color: hsl(0, 0%, 100%);
   font-family: 'GFS Neohellenic';
   font-size: 16px;
+  max-width: 650px;
 }
