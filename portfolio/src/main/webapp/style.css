@@ -1,30 +1,4 @@
-
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="grid-container"] {
-    display: grid;
-    grid-template-areas:
-    'intro'
-    'title'
-    'school'
-    'home'
-    'work'
-    'fun'
-    'dogs'
-    'song'
-    'art'
-    'more'
-    'social'
-    'footer'
-    'bottom';
-    grid-gap: 10px;
-    background-color: hsl(210, 100%, 95%);
-    padding: 10px;
-    align-content: center;
-    justify-content: center;
-  }
-}
-
+/* Layout grid container */
 .intro { 
   grid-area: intro; 
   background-color:hsl(210, 100%, 95%);
@@ -59,12 +33,14 @@
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
 
-.sect-4 { grid-area: dogs; 
+.sect-4 { 
+  grid-area: dogs; 
   background-color: hsl(210, 100%, 80%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
 
-.sect-5 { grid-area: song; 
+.sect-5 {
+  grid-area: song; 
   background-color: hsl(210, 100%, 70%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
@@ -82,8 +58,7 @@
 
 .sect-7 {
   grid-area: social; 
-  background-color: hsl(210
-  , 100%, 65%);
+  background-color: hsl(210, 100%, 65%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
 
@@ -93,18 +68,18 @@
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
 
-.left {grid-area: left}
-.center {
-  grid-area: middle;
-  max-width: 650px;}
-
-.grid-overall-container{
-  display: grid;
-  grid-template-areas: 'left middle left';
-  padding: 10px;
-  align-content: center;
-  justify-content: center;
+.intro:hover {
+  transform: scale(1.03);
 }
+
+.goodbye:hover {
+  transform: scale(1.03);
+}
+
+[class*="sect"]:hover {
+  transform: scale(1.03);
+}
+
 .grid-container {
   display: grid;
   grid-template-areas:
@@ -119,10 +94,37 @@
     'social social'
     'footer footer';
   grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
   background-color: hsl(210, 100%, 95%);
   padding: 10px;
   align-content: center;
   justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+    'intro'
+    'title'
+    'school'
+    'home'
+    'work'
+    'fun'
+    'dogs'
+    'song'
+    'art'
+    'more'
+    'social'
+    'footer'
+    'bottom';
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+    background-color: hsl(210, 100%, 95%);
+    padding: 10px;
+    align-content: center;
+    justify-content: center;
+  }
 }
 
 .grid-container > div {
@@ -131,10 +133,45 @@
   align-items: center;
 }
 
+/* Container to center grid */
+.side {grid-area: side}
+
+.center {
+  grid-area: middle;
+  max-width: 800px;}
+
+.grid-overall-container{
+  display: grid;
+  grid-template-areas: 'side middle side';
+  padding: 10px;
+  align-content: center;
+  justify-content: center;
+}
+
 .grid-overall-container > div {
   text-align: center;
   padding: 5px 0;
   align-items: center;
+}
+
+#content {
+  text-align: center;
+  background-color: hsl(210, 100%, 95%);
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'GFS Neohellenic';
+  font-size: 16px;
+}
+
+.header {
+  padding: 10px;
+  font-size: 20px;
+  color: black;
+}
+
+.bottom {
+  font-size: 20px;
+  padding: 10px;
 }
 
 .rainbow-text {
@@ -146,26 +183,6 @@
                                             hsl(50, 100%, 90%),
                                             hsl(25, 100%, 90%),
                                             hsl(25, 100%, 90%));
-  font-family: 'GFS Neohellenic';
-}
-
-.center {
-  text-align : center;
-}
-
-.header {
-  text-align : center;
-  font-family: 'GFS Neohellenic';
-  font-size: 20px;
-  color: black;
-  padding: 10px;
-}
-
-.bottom {
-  text-align : center;
-  font-family: 'GFS Neohellenic';
-  font-size: 20px;
-  padding: 10px;
 }
 
 img {
@@ -176,119 +193,36 @@ img {
   max-width: 75%;
 }
 
+.logo img:hover {
+  transform: scale(1.1);
+}
+
 button{
   background-color: hsl(0, 0%, 100%);
   font-family: 'GFS Neohellenic';
   font-size: 12px;
 }
 
-#content {
-  font-family: 'GFS Neohellenic';
-  background-color: hsl(210, 100%, 95%);
-}
-
-#sect-0 {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-
-#sect-1 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-
-#sect-2 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-
-#sect-3 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-
-#sect-4 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-#sect-5 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-#sect-6 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-}
-
-#sect-7 {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'GFS Neohellenic';
-  font-size: 16px;
-  text-align : center;
+button:hover {
+  border: solid white;
 }
 
 #song-container {
   margin-top: 20px;
-  font-family: 'GFS Neohellenic';
   font-size: 16px;
 }
 
 #musical-container {
   margin-top: 20px;
-  font-family: 'GFS Neohellenic';
   font-size: 16px;
 }
 
 #goodbye-container {
   margin-top: 20px;
-  font-family: 'GFS Neohellenic';
   font-size: 16px;
 }
 
-#l-logo{}
-
-#g-logo{}
-
-#l-logo:hover{
-  transform: scale(1.1);
-}
-
-#g-logo:hover{
-  transform: scale(1.1);
-}
-
-[class*="sect"]:hover {
-  transform: scale(1.03);
-}
-
-button:hover {
-  border: solid white;
-}
-
-.intro:hover {
-  transform: scale(1.03);
-}
-
-.goodbye:hover {
-  transform: scale(1.03);
-}
-
+/* Image pages */
 .image-thumbnails {
   display: flex;
   flex-wrap: wrap;
@@ -302,13 +236,14 @@ button:hover {
 }
 
 .image-thumbnails img:hover {
-  border: thick solid black;
+  border: thick solid white;
+  transform: scale(1.3);
 }
 
 #img-heading {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  max-width: 800px;
   background-color: hsl(288, 100%, 96%);
   text-align : center;
   font-family: 'GFS Neohellenic';
@@ -324,5 +259,5 @@ button:hover {
   background-color: hsl(0, 0%, 100%);
   font-family: 'GFS Neohellenic';
   font-size: 16px;
-  max-width: 650px;
+  max-width: 800px;
 }
