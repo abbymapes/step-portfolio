@@ -63,12 +63,41 @@ function addRandomMusical() {
 }
 
 /**
- * Add a random goodbye to the page.
+ * Adds a random goodbye to the page.
  */
-async function getRandomGoodbye() {
-  const response = await fetch('/data');
-  const goodbye = await response.text();
+function addRandomGoodbye() {
+  const goodbyes =
+      ['Goodbye!', 
+      'Au revoir!', 
+      'Ciao', 'Sayonara', 'Aloha',
+      'Arrivederci', 'Bon Voyage'];
+
+  // Pick a random goodbye.
+  const goodbye = goodbyes[Math.floor(Math.random() * goodbyes.length)];
+  getGoodbyes();
+  // Add it to the page.
   document.getElementById('goodbye-container').innerText = goodbye;
+}
+
+/**
+ * Fetches goodbyes from the servers and adds them to the DOM.
+ */
+function getGoodbyes() {
+  fetch('/data').then(response => response.json()).then((goodbyes) => {
+  const dataListElement = document.getElementById('data-container');
+  dataListElement.innerHTML = '';
+
+  for (var i = 0; i < goodbyes.length; ++i){
+    dataListElement.appendChild(createListElement(goodbyes[i]));
+    }
+  });
+}
+
+/** Creates an <li> element containing text. */
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
 
 /**
