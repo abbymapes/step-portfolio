@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.gson.Gson;
 
 /** Servlet that returns some example content. */
 @WebServlet("/data")
@@ -43,9 +44,16 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String goodbye = goodbyes.get((int) (Math.random() * goodbyes.size()));
+    String json = convertToJsonUsingGson(goodbyes);
 
-    response.setContentType("text/html;");
-    response.getWriter().println(goodbye);
+    // Send the JSON as the response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+
+  private String convertToJsonUsingGson(List<String> list) {
+    Gson gson = new Gson();
+    String json = gson.toJson(list);
+    return json;
   }
 }
