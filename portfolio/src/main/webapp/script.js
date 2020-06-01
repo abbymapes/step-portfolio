@@ -87,8 +87,8 @@ function getComments() {
     dataListElement.innerHTML = '';
 
     for (var i = 0; i < comments.length; ++i){
-        dataListElement.appendChild(createListElement(comments[i]));
-        }
+      dataListElement.appendChild(createListElement(comments[i]));
+    }
   });
 }
 
