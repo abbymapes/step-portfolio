@@ -42,8 +42,7 @@ function addRandomSong() {
   const song = songs[Math.floor(Math.random() * songs.length)];
 
   // Add it to the page.
-  const songContainer = document.getElementById('song-container');
-  songContainer.innerText = song;
+  document.getElementById('song-container').innerText = song;
 }
 
 /**
@@ -60,24 +59,16 @@ function addRandomMusical() {
   const musical = musicals[Math.floor(Math.random() * musicals.length)];
 
   // Add it to the page.
-  const musicalContainer = document.getElementById('musical-container');
-  musicalContainer.innerText = musical;
+  document.getElementById('musical-container').innerText = musical;
 }
 
 /**
- * Adds a random goodbye to the page.
+ * Add a random goodbye to the page.
  */
-function addRandomGoodbye() {
-  const goodbyes =
-      ['Goodbye!', '¡Adiós!', '再见！', 'Au revoir!', '¡Ciao!', 'Arrivederci',
-      'Sayonara', 'Aloha', 'Bon Voyage'];
-
-  // Pick a random goodbye.
-  const goodbye = goodbyes[Math.floor(Math.random() * goodbyes.length)];
-
-  // Add it to the page.
-  const goodbyeContainer = document.getElementById('goodbye-container');
-  goodbyeContainer.innerText = goodbye;
+async function getRandomGoodbye() {
+  const response = await fetch('/data');
+  const goodbye = await response.text();
+  document.getElementById('goodbye-container').innerText = goodbye;
 }
 
 /**

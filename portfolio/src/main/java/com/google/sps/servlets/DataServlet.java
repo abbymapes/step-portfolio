@@ -19,14 +19,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that returns some example content. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+  private List<String> goodbyes;
+
+  @Override
+  public void init() {
+      goodbyes = new ArrayList<>();
+
+      goodbyes.add("Goodbye!");
+      goodbyes.add("Au revoir!");
+      goodbyes.add("Ciao");
+      goodbyes.add("Arrivederci");
+      goodbyes.add("Aloha");
+      goodbyes.add("Sayonara");
+      goodbyes.add("Bon Voyage");
+  }
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String goodbye = goodbyes.get((int) (Math.random() * goodbyes.size()));
+
     response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello Abby!</h1>");
+    response.getWriter().println(goodbye);
   }
 }
