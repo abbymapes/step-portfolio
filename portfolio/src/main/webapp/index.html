@@ -9,7 +9,7 @@
         <script src="script.js"></script>
     </head>
 
-    <body>
+    <body onload="getComments()">
         <div id = "content">
             <div class="grid-overall-container">
 
@@ -108,8 +108,17 @@
                           <p><button onclick="addRandomGoodbye()">Click me!</button>
                           <div id="goodbye-container" class="rainbow-text"></div></p>
                           <br>
+                          
 
-                          <ul id = "data-container"></ul>
+                          <form action = "/data" method = "POST">
+                            <p> Comments: </p>
+                            <textarea name="text-input">Write Comment Here</textarea>
+                            <br><br>
+                            <input type="submit"/>
+                          </form>
+
+                          <ul id = "comment-container"></ul>
+
                         </div>
                     </div>
                     <div class="bottom rainbow-text"><h1> </h1></div>
