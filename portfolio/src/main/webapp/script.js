@@ -74,22 +74,21 @@ function addRandomGoodbye() {
 
   // Pick a random goodbye.
   const goodbye = goodbyes[Math.floor(Math.random() * goodbyes.length)];
-  getGoodbyes();
   // Add it to the page.
   document.getElementById('goodbye-container').innerText = goodbye;
 }
 
 /**
- * Fetches goodbyes from the servers and adds them to the DOM.
+ * Fetches comments from the servers and adds them to the DOM.
  */
-function getGoodbyes() {
-  fetch('/data').then(response => response.json()).then((goodbyes) => {
-  const dataListElement = document.getElementById('data-container');
-  dataListElement.innerHTML = '';
+function getComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const dataListElement = document.getElementById('comment-container');
+    dataListElement.innerHTML = '';
 
-  for (var i = 0; i < goodbyes.length; ++i){
-    dataListElement.appendChild(createListElement(goodbyes[i]));
-    }
+    for (var i = 0; i < comments.length; ++i){
+        dataListElement.appendChild(createListElement(comments[i]));
+        }
   });
 }
 

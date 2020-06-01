@@ -27,33 +27,48 @@ import com.google.gson.Gson;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private List<String> goodbyes;
+  private List<String> comments;
 
   @Override
   public void init() {
-      goodbyes = new ArrayList<>();
-
-      goodbyes.add("Goodbye!");
-      goodbyes.add("Au revoir!");
-      goodbyes.add("Ciao");
-      goodbyes.add("Arrivederci");
-      goodbyes.add("Aloha");
-      goodbyes.add("Sayonara");
-      goodbyes.add("Bon Voyage");
+      comments = new ArrayList<>();
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String json = convertToJsonUsingGson(goodbyes);
+    String json = convertToJsonUsingGson(comments);
 
     // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
 
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String userComment = getParameter(request, "text-input", "not-working");
+
+    comments.add(0, userComment);
+
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+
   private String convertToJsonUsingGson(List<String> list) {
     Gson gson = new Gson();
     String json = gson.toJson(list);
     return json;
+  }
+
+    /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
