@@ -33,13 +33,6 @@ import com.google.gson.Gson;
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
-  private List<String> comments;
-
-  /*@Override
-  public void init() {
-      comments = new ArrayList<>();
-  }*/
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
@@ -63,18 +56,25 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
-    String userComment = getParameter(request, "text-input", "");
-    long timestamp = System.currentTimeMillis();
+    String userComment = getParameter(request, "text-input", "empty");
 
-    Entity commentEntity = new Entity("Comment");
-    commentEntity.setProperty("comment", userComment);
-    commentEntity.setProperty("timestamp", timestamp);
+    if (userComment == "empty"){
+        response.sendRedirect("/index.html");
+    }
 
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(commentEntity);
+    else{
+      long timestamp = System.currentTimeMillis();
 
-    // Redirect back to the HTML page.
-    response.sendRedirect("/index.html");
+      Entity commentEntity = new Entity("Comment");
+      commentEntity.setProperty("comment", userComment);
+      commentEntity.setProperty("timestamp", timestamp);
+
+      DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      datastore.put(commentEntity);
+
+      // Redirect back to the HTML page.
+      response.sendRedirect("/index.html");
+    }
   }
 
   private String convertToJsonUsingGson(List<String> list) {
@@ -89,9 +89,10 @@ public class DataServlet extends HttpServlet {
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
-    if (value == null) {
+    if (value == null || value.isEmpty() || value.split(" ").length == 0) {
       return defaultValue;
     }
+    
     return value;
   }
 }
