@@ -110,7 +110,7 @@ function createTableRowElement(text) {
   const trElement = document.createElement('tr');
   const tdElement = document.createElement('td');
 
-  tdElement.innerText = text;
+  tdElement.innerText = '"' + text + '"';
   tdText = tdElement.outerHTML;
   trElement.innerHTML = tdText;
 

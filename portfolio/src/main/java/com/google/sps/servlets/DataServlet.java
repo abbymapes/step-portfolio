@@ -116,7 +116,7 @@ public class DataServlet extends HttpServlet {
     String quantityString = request.getParameter("quantity");
 
     if (quantityString ==null) return -1;
-    if (quantityString.equals("All")) return -1;
+    if (quantityString.toLowerCase().equals("all")) return -1;
 
     // Convert the input to an int.
     int quantity;
