@@ -99,7 +99,6 @@ function getComments() {
 function getQuantity() {
   var quantity = document.getElementById("quantity");
   var strQuantity = quantity.options[quantity.selectedIndex].value;
-
   return strQuantity;
 }
 
@@ -109,11 +108,10 @@ function getQuantity() {
 function createTableRowElement(text) {
   const trElement = document.createElement('tr');
   const tdElement = document.createElement('td');
-
+  
   tdElement.innerText = text;
   tdText = tdElement.outerHTML;
   trElement.innerHTML = tdText;
-
   return trElement;
 }
 
