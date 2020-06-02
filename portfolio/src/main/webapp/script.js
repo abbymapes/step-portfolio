@@ -88,7 +88,7 @@ function getComments() {
     dataListElement.innerHTML = '';
 
     for (var i = 0; i < comments.length; ++i){
-      dataListElement.appendChild(createListElement(comments[i]));
+      dataListElement.appendChild(createTableRowElement(comments[i]));
     }
   });
 }
@@ -100,32 +100,28 @@ function getQuantity() {
   var quantity = document.getElementById("quantity");
   var strQuantity = quantity.options[quantity.selectedIndex].value;
 
-  /*for (var i = 0; i <= quantity.options.length; ++i){
-      if (i == quantity.selectedIndex){
-          quantity.options[i].selected = "true";
-      }
-      else{
-          quantity.options[i].selected = "false";
-      }
-  }*/
   return strQuantity;
 }
 
-/** Creates an <li> element containing text. */
-function createListElement(text) {
-  //const liElement = document.createElement('li');
-  //liElement.innerText = text;
-
+/** 
+ * Creates an table row element,<tr><td> </td></tr>, containing text. 
+ */
+function createTableRowElement(text) {
   const trElement = document.createElement('tr');
   const tdElement = document.createElement('td');
+
   tdElement.innerText = text;
   tdText = tdElement.outerHTML;
   trElement.innerHTML = tdText;
 
-  console.log(trElement);
-  console.log(tdElement);
-
   return trElement;
+}
+
+/**
+ * Deletes comments from the server.
+ */
+function deleteComments() {
+  fetch('/delete-data', {method: 'POST'}).then(getComments)
 }
 
 /**

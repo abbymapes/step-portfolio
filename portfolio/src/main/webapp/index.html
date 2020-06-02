@@ -127,17 +127,20 @@
 
                           <table id = "comment-container"></table>
 
-                          <form action = "/data" method = "POST">
-                          <br>
-                          <label for="quantity">Maximum Number of Comments to Display:</label>
-                            <select name="quantity" id="quantity" onchange="getComments()">
-                              <option value="5" selected="true">5</option>
-                              <option value="10">10</option>
-                              <option value="15">15</option>
-                              <option value="all">All</option>
-                            </select>
-                            <br><br>
-                          </form>
+                            <form action = "/data" method = "POST">
+                            <br>
+                            <label for="quantity" class="small-text">Maximum Number of Comments to Display:</label>
+                                <select name="quantity" id="quantity" onchange="getComments()">
+                                <option value="5" selected="true">5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="all">All</option>
+                                </select>
+                                <br><br>
+                            </form>
+
+                          <button onclick="deleteComments()" class="rainbow-text">
+                              Delete Comments</button>
 
                         </div>
                     </div>

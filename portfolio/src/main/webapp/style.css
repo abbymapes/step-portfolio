@@ -205,6 +205,10 @@
                                             hsl(25, 100%, 90%));
 }
 
+.small-text{
+  font-size: 12px;
+}
+
 img {
   display: block;
   margin-left: auto;
@@ -258,15 +262,18 @@ input:hover {
 }
 
 form {
-  backgound-color:hsl(0,0%,100%);
   font-family:'GFS Neohellenic';
   font-size: 16px;
 }
 
 textarea{
-  text-align: center;
   font-family:'GFS Neohellenic';
   min-width: 90%;
+}
+
+textarea::placeholder {
+  font-family:'GFS Neohellenic';
+  text-align: center; 
 }
 
 table {
@@ -274,15 +281,18 @@ table {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  border: 5px rgb(255, 255, 255) solid;
   width: 100%;
-  border-collapse: collapse;
+  border-collapse:separate; 
+  border-spacing:0 15px;
 }
 td, th {
-  border: 5px rgb(255, 255, 255) solid;
+  border: 2px rgb(255, 255, 255) solid;
   text-align: center;
-  padding: 15px;
+  font-size: 12px;
+  font-style: italic;
+  padding: 10px;
   width: 100%;
+  color: hsl(0, 0%, 19%);
 }
 
 tr:hover {

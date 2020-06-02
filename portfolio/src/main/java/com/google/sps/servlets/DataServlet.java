@@ -29,22 +29,19 @@ import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
 
-/** Servlet that returns some example content. */
+/** Servlet that returns comments. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     int userQuantity = getCommentQuantity(request);
-    
-    boolean all = true;
-    if (userQuantity != -1) all = false;
+    boolean all = (userQuantity == -1);
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
-
     List<String> comments = new ArrayList<>();
 
     int i = 0;
@@ -71,7 +68,7 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String userComment = getParameter(request, "text-input", "empty");
 
-    if (userComment == "empty"){
+    if (userComment.equals("empty")){
         response.sendRedirect("/index.html");
     }
 
