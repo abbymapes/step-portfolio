@@ -35,15 +35,28 @@ public class DataServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    int userQuantity = getCommentQuantity(request);
+    
+    boolean all = true;
+    if (userQuantity != -1) all = false;
+
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
     List<String> comments = new ArrayList<>();
+
+    int i = 0;
     for (Entity entity : results.asIterable()) {
-      String comment = (String) entity.getProperty("comment");
-      comments.add(comment);
+        if (all == false && i >= userQuantity){
+            break;
+        }
+        else{
+            String comment = (String) entity.getProperty("comment");
+            comments.add(comment);
+        }
+        ++i;
     }
 
     String json = convertToJsonUsingGson(comments);
@@ -89,10 +102,33 @@ public class DataServlet extends HttpServlet {
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
-    if (value == null || value.isEmpty() || value.split(" ").length == 0) {
+    if (value == null || value.isEmpty() || value.split(" ").length == 0 || value.equals("Write Comment Here")) {
       return defaultValue;
     }
-    
+
     return value;
+  }
+
+
+   /** Returns the quantity of comments chosen by the user or
+    *  the default value if the parameter was not specified by the client 
+    *  -1 will represent the "All" comments choice
+    */
+  private int getCommentQuantity(HttpServletRequest request) {
+    // Get the input from the form.
+    String quantityString = request.getParameter("quantity");
+
+    if (quantityString ==null) return -1;
+    if (quantityString.equals("All")) return -1;
+
+    // Convert the input to an int.
+    int quantity;
+    try {
+      quantity = Integer.parseInt(quantityString);
+    } catch (NumberFormatException e) {
+      System.err.println("Could not convert to int: " + quantityString);
+      return -1;
+    }
+    return quantity;
   }
 }

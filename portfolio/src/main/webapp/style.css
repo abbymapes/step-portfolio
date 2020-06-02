@@ -68,11 +68,22 @@
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
 
+.comments {
+  grid-area: comments; 
+  background-color: hsl(210, 100%, 97%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);
+}
+
 .intro:hover {
   transform: scale(1.03);
 }
 
 .goodbye:hover {
+  transform: scale(1.03);
+}
+
+.comments:hover {
   transform: scale(1.03);
 }
 
@@ -92,7 +103,8 @@
     'song art'
     'more more'
     'social social'
-    'footer footer';
+    'footer footer'
+    'comments comments';
   grid-gap: 10px;
   grid-template-columns: repeat(2, 1fr);
   background-color: hsl(210, 100%, 95%);
@@ -117,7 +129,8 @@
     'more'
     'social'
     'footer'
-    'bottom';
+    'bottom'
+    'comments';
     grid-gap: 10px;
     grid-template-columns: 1fr;
     background-color: hsl(210, 100%, 95%);
@@ -207,6 +220,57 @@ button:hover {
   border: solid white;
 }
 
+select{
+  background-color: hsl(0, 0%, 100%);
+  font-family: 'GFS Neohellenic';
+  font-size: 12px;
+}
+
+select:hover {
+  border: solid white;
+}
+
+option{
+  background-color: hsl(0, 0%, 100%);
+  font-family: 'GFS Neohellenic';
+  font-size: 12px;
+}
+
+option:hover {
+  border: solid white;
+}
+
+input{
+  background-color: hsl(0, 0%, 100%);
+  font-family: 'GFS Neohellenic';
+  font-size: 12px;
+}
+
+input:hover {
+  border: solid white;
+}
+
+form {
+  backgound-color:hsl(0,0%,100%);
+  font-family:'GFS Neohellenic';
+  font-size: 16px;
+}
+
+textarea{
+  text-align: center;
+  font-family:'GFS Neohellenic';
+  min-width: 90%;
+}
+
+ul {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  backgound-color:hsl(0,0%,100%);
+  font-family:'GFS Neohellenic';
+  text-align: center;
+}
+
 #song-container {
   margin-top: 20px;
   font-size: 16px;
@@ -221,6 +285,15 @@ button:hover {
   margin-top: 20px;
   font-size: 16px;
 }
+
+#comment-container {
+  margin-top: 20px;
+  font-size: 16px;
+  font-family:'GFS Neohellenic';
+  background-color: white;
+  max-width: 80%;
+}
+
 
 /* Image pages */
 .image-thumbnails {

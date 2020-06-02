@@ -82,7 +82,8 @@ function addRandomGoodbye() {
  * Fetches comments from the servers and adds them to the DOM.
  */
 function getComments() {
-  fetch('/data').then(response => response.json()).then((comments) => {
+  var quantity = getQuantity();
+  fetch('/data?quantity='+ quantity).then(response => response.json()).then((comments) => {
     const dataListElement = document.getElementById('comment-container');
     dataListElement.innerHTML = '';
 
@@ -90,6 +91,24 @@ function getComments() {
       dataListElement.appendChild(createListElement(comments[i]));
     }
   });
+}
+
+/**
+ * Fetches quantity of comments specified by the user from the form.
+ */
+function getQuantity() {
+  var quantity = document.getElementById("quantity");
+  var strQuantity = quantity.options[quantity.selectedIndex].value;
+
+  /*for (var i = 0; i <= quantity.options.length; ++i){
+      if (i == quantity.selectedIndex){
+          quantity.options[i].selected = "true";
+      }
+      else{
+          quantity.options[i].selected = "false";
+      }
+  }*/
+  return strQuantity;
 }
 
 /** Creates an <li> element containing text. */
@@ -115,6 +134,7 @@ function setBackgroundColor(){
   const goodbye = document.getElementsByClassName("goodbye");
   const grid = document.getElementsByClassName("grid-container");
   const content = document.getElementById("content");
+  const comments = document.getElementsByClassName("comments");
 
   content.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
   intro[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
@@ -127,4 +147,5 @@ function setBackgroundColor(){
   sect5[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
   sect6[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
   sect7[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
+  comments[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 97%)";
 }
