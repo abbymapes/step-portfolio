@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Happy Places</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjXCSPI4yzByHxDXafuG1ScI5opZmOAyg"></script>
+    <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="createMap();">
+
     <div id="img-content">
       <p><button onclick="document.location = 'index.html'" 
                class="rainbow-text">Home</button></p>
       <div id="img-heading" class = "rainbow-text"><h1>My Happy Places</h1></div>
+      
+      <div id="map"></div>
+
       <div class="image-thumbnails">
         <a href="images/flowerschapel.jpg"><img src="images/flowerschapel.jpg"/></a>
         <a href="images/rainbow.jpg"><img src="images/rainbow.jpg"/></a>

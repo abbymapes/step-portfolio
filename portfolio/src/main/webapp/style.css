@@ -299,6 +299,19 @@ tr:hover {
   transform: scale(1.03);
 }
 
+html,body{
+    height: 100%;
+}
+
+#map {
+  border: thin solid white;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80%
+}
+
 #song-container {
   margin-top: 20px;
   font-size: 16px;
@@ -359,4 +372,5 @@ tr:hover {
   font-family: 'GFS Neohellenic';
   font-size: 16px;
   max-width: 800px;
+  height: 100%;
 }

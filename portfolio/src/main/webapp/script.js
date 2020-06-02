@@ -121,6 +121,14 @@ function deleteComments() {
   fetch('/delete-data', {method: 'POST'}).then(getComments)
 }
 
+
+/** Creates a map and adds it to the page. */
+function createMap() {
+  const map = new google.maps.Map(
+      document.getElementById('map'),
+      {center: {lat: 40, lng: -120}, zoom: 3});
+}
+
 /**
  * Sets all section colors to variations of a randomly generated color
  */
