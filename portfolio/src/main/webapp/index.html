@@ -33,7 +33,9 @@
                           in Computer Science and a certificate in 
                           <a href = "https://iss.duke.edu/undergraduate-certificate"
                           target="_blank">Information 
-                          Science + Studies</a>.<br>
+                          Science + Studies</a>.
+                          <br>
+                          <br>
                           <img src="/images/duke.png" alt = "Duke Logo."/></p>  
 
                           <h3 class = "rainbow-text">Coding Languages</h3>
@@ -110,11 +112,11 @@
                           <br>
                         </div>
 
+                        <div class="comm-title rainbow-text">
+                            <h3 style = "font-size: 25px">Comments</h3>
+                        </div>
+                        
                         <div class="comments">
-                          <div class = "more rainbow-text">
-                            <h2>Comments</h2>
-                          </div>
-                          
                           <form action = "/data" method = "POST">
                             <p> Leave a Comment: </p>
                             <textarea name="text-input" placeholder="Write Comment Here"></textarea>
@@ -123,11 +125,11 @@
                             <br><br>
                           </form>
 
-                          <ul id = "comment-container"></ul>
+                          <table id = "comment-container"></table>
 
                           <form action = "/data" method = "POST">
-                          
-                            <label for="quantity">Maximum Number of Comments to Display:</label>
+                          <br>
+                          <label for="quantity">Maximum Number of Comments to Display:</label>
                             <select name="quantity" id="quantity" onchange="getComments()">
                               <option value="5" selected="true">5</option>
                               <option value="10">10</option>

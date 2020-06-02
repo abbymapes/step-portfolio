@@ -68,6 +68,12 @@
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);}
 
+.comm-title {
+  grid-area: comm-title;
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);
+}
+
 .comments {
   grid-area: comments; 
   background-color: hsl(210, 100%, 97%);
@@ -104,6 +110,7 @@
     'more more'
     'social social'
     'footer footer'
+    'comm-title comm-title'
     'comments comments';
   grid-gap: 10px;
   grid-template-columns: repeat(2, 1fr);
@@ -129,7 +136,7 @@
     'more'
     'social'
     'footer'
-    'bottom'
+    'comm-title'
     'comments';
     grid-gap: 10px;
     grid-template-columns: 1fr;
@@ -262,13 +269,24 @@ textarea{
   min-width: 90%;
 }
 
-ul {
-  display: block;
+table {
+  font-family: 'GFS Neohellenic';
   margin-left: auto;
   margin-right: auto;
-  backgound-color:hsl(0,0%,100%);
-  font-family:'GFS Neohellenic';
   text-align: center;
+  border: 5px rgb(255, 255, 255) solid;
+  width: 100%;
+  border-collapse: collapse;
+}
+td, th {
+  border: 5px rgb(255, 255, 255) solid;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+}
+
+tr:hover {
+  transform: scale(1.03);
 }
 
 #song-container {
@@ -287,10 +305,8 @@ ul {
 }
 
 #comment-container {
-  margin-top: 20px;
   font-size: 16px;
   font-family:'GFS Neohellenic';
-  background-color: white;
   max-width: 80%;
 }
 
