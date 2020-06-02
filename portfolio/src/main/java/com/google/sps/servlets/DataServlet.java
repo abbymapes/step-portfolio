@@ -36,12 +36,14 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     int userQuantity = getCommentQuantity(request);
+
     boolean all = (userQuantity == -1);
 
     Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
+
     List<String> comments = new ArrayList<>();
 
     int i = 0;
