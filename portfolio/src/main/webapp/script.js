@@ -113,9 +113,19 @@ function getQuantity() {
 
 /** Creates an <li> element containing text. */
 function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+  //const liElement = document.createElement('li');
+  //liElement.innerText = text;
+
+  const trElement = document.createElement('tr');
+  const tdElement = document.createElement('td');
+  tdElement.innerText = text;
+  tdText = tdElement.outerHTML;
+  trElement.innerHTML = tdText;
+
+  console.log(trElement);
+  console.log(tdElement);
+
+  return trElement;
 }
 
 /**
