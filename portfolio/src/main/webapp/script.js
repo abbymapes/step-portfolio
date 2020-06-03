@@ -86,10 +86,9 @@ function getComments() {
   fetch('/data?quantity='+ quantity).then(response => response.json()).then((comments) => {
     const dataListElement = document.getElementById('comment-container');
     dataListElement.innerHTML = '';
-
-    for (var i = 0; i < comments.length; ++i){
-      dataListElement.appendChild(createTableRowElement(comments[i]));
-    }
+    comments.forEach((comment) => {
+      dataListElement.appendChild(createTableRowElement(comment));
+    })
   });
 }
 
@@ -105,12 +104,18 @@ function getQuantity() {
 /** 
  * Creates an table row element,<tr><td> </td></tr>, containing text. 
  */
-function createTableRowElement(text) {
+function createTableRowElement(commentObj) {
   const trElement = document.createElement('tr');
+  const thElement = document.createElement('th');
   const tdElement = document.createElement('td');
-  tdElement.innerText = '"' + text + '"';
+  
+  thElement.innerText = commentObj.name;
+  tdElement.innerText = '"' + commentObj.comment + '"';
+
+  thText = thElement.outerHTML;
   tdText = tdElement.outerHTML;
-  trElement.innerHTML = tdText;
+
+  trElement.innerHTML = thText + tdText;
   return trElement;
 }
 
@@ -126,7 +131,89 @@ function deleteComments() {
 function createMap() {
   const map = new google.maps.Map(
       document.getElementById('map'),
-      {center: {lat: 40, lng: -120}, zoom: 3});
+      {center: {lat: 40, lng: -120}, 
+      zoom: 3,
+      styles: [
+            {elementType: 'geometry', stylers: [{color: '#fffed6'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#fffed6'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#9c9c9c'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#b0b0b0'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#b0b0b0'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#fff5b8'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#bababa'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#ccd0fc'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#ccd0fc'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca4ff'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#e5ccff'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#e5ccff'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#cc9cff'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#f7d1ff'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#eb8aff'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#b0deff'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#4596ff'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#4596ff'}]
+            }
+          ]
+        });
 }
 
 /**

@@ -284,15 +284,29 @@ table {
   width: 100%;
   border-collapse:separate; 
   border-spacing:0 15px;
+  table-layout: fixed;
 }
-td, th {
+th {
   border: 2px rgb(255, 255, 255) solid;
-  text-align: center;
+  text-align: left;
   font-size: 12px;
-  font-style: italic;
   padding: 10px;
-  width: 100%;
-  color: hsl(0, 0%, 19%);
+  color: hsl(0, 0%, 14%);
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+td {
+  border: 2px rgb(255, 255, 255) solid;
+  text-align: left;
+  font-size: 12px;
+  padding: 10px;
+  width: 60%;
+  font-style: italic;
+  color: hsl(0, 0%, 23%);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 tr:hover {
@@ -301,6 +315,11 @@ tr:hover {
 
 html,body{
     height: 100%;
+}
+
+#name-input{
+  height: 14pt;
+  resize:none;
 }
 
 #map {
