@@ -130,10 +130,10 @@ function deleteComments() {
 /** Creates a map and adds it to the page. */
 function createMap() {
   const map = new google.maps.Map(
-      document.getElementById('map'),
-      {center: {lat: 40, lng: -110}, 
-      zoom: 3,
-      styles: [
+  document.getElementById('map'),
+  	{center: {lat: 40, lng: -110}, 
+     zoom: 3,
+     styles: [
             {elementType: 'geometry', stylers: [{color: '#fffed6'}]},
             {elementType: 'labels.text.stroke', stylers: [{color: '#fffed6'}]},
             {elementType: 'labels.text.fill', stylers: [{color: '#9c9c9c'}]},
@@ -160,12 +160,12 @@ function createMap() {
             {
               featureType: 'road',
               elementType: 'geometry',
-              stylers: [{color: '#ccd0fc'}]
+              stylers: [{color: '#cfcfcf'}]
             },
             {
               featureType: 'road',
               elementType: 'geometry.stroke',
-              stylers: [{color: '#ccd0fc'}]
+              stylers: [{color: '#cfcfcf'}]
             },
             {
               featureType: 'road',
@@ -175,27 +175,27 @@ function createMap() {
             {
               featureType: 'road.highway',
               elementType: 'geometry',
-              stylers: [{color: '#e5ccff'}]
+              stylers: [{color: '#858585'}]
             },
             {
               featureType: 'road.highway',
               elementType: 'geometry.stroke',
-              stylers: [{color: '#e5ccff'}]
+              stylers: [{color: '#858585'}]
             },
             {
               featureType: 'road.highway',
               elementType: 'labels.text.fill',
-              stylers: [{color: '#cc9cff'}]
+              stylers: [{color: '#c2c2c2'}]
             },
             {
               featureType: 'transit',
               elementType: 'geometry',
-              stylers: [{color: '#f7d1ff'}]
+              stylers: [{color: '#f7ffed'}]
             },
             {
               featureType: 'transit.station',
               elementType: 'labels.text.fill',
-              stylers: [{color: '#eb8aff'}]
+              stylers: [{color: '#d4d4d4'}]
             },
             {
               featureType: 'water',
@@ -212,43 +212,195 @@ function createMap() {
               elementType: 'labels.text.stroke',
               stylers: [{color: '#4596ff'}]
             }
-          ]
-        });
+  				]});
+	setMarkers(map);
+}
 
-    var places = [
-  	{
-			position: {lat: 21.011843, lng: -156.638599},
-			title: 'Honolua Bay',
-			label: 'Honolua Bay'
-    }, {
-      position: {lat: 36.0014, lng: -78.9382},
-      title: 'Duke University',
-      label: 'Duke University'
-    }, {
-      position: {lat: 33.606222, lng: -117.893036},
-      title: 'Balboa Island',
-     	label: 'Balboa Island'
-    }];
-  
-    var goldStar = {
-        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-        fillColor: 'white',
-        fillOpacity: 0.8,
-        scale: 0.1,
-        strokeColor: 'black',
-        strokeWeight: 2
+function setMarkers(map){
+  const pinkStar = {
+      path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+      fillColor: '#ff29a9',
+      fillOpacity: 1.0,
+      scale: 0.08,
+      strokeColor: 'white',
+      strokeWeight: 0.5,
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 100),
+      labelOrigin: new google.maps.Point(0, -50)
     };
+
+  const balboaStar = {
+      path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+      fillColor: '#ff29a9',
+      fillOpacity: 1.0,
+      scale: 0.08,
+      strokeColor: 'white',
+      strokeWeight: 0.5,
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, -100),
+      labelOrigin: new google.maps.Point(0, 350)
+    };
+
+	var markerBeachClub = new google.maps.Marker({
+    position: {lat: 34.025815, lng: -118.515820},
+    title: 'Santa Monica Beach',
+    label: {text: 'Santa Monica Beach', color: '#d4007f'},
+    map: map,
+    icon: pinkStar
+  });
+  
+	var markerDuke = new google.maps.Marker({
+    position: {lat: 36.0014, lng: -78.9382},
+    title: 'Duke University',
+    label: {text: 'Duke University', color: '#d4007f'},
+    map: map,
+    icon: pinkStar
+  });
+  
     
-    // Create markers.
-	for (var i = 0; i < places.length; i++) {
-  	var marker = new google.maps.Marker({
-    	position: places[i].position,
-      title: places[i].title,
-      label: places[i].label,
-      map: map,
-      icon: goldStar
-    });
+	var markerBalboa = new google.maps.Marker({
+    position: {lat: 33.606222, lng: -117.893036},
+    title: 'Balboa Island',
+   	label: {text:'Balboa Island', color: '#d4007f'},
+    map: map,
+    icon: balboaStar
+  });
+
+	var markerHonolua = new google.maps.Marker({
+    position: {lat: 21.011843, lng: -156.638599},
+		title: 'Honolua Bay',
+		label: {text: 'Honolua Bay', color: '#d4007f'},
+    map: map,
+    icon: pinkStar
+  });
+  
+  var bounds = new google.maps.LatLngBounds();
+  bounds.extend(markerHonolua.getPosition());
+  bounds.extend(markerBalboa.getPosition());
+  bounds.extend(markerDuke.getPosition());
+  bounds.extend(markerBeachClub.getPosition());
+  map.fitBounds(bounds);
+  
+  var infoWindowDuke = getInfoWindow('duke');
+  google.maps.event.addListener(infoWindowDuke, 'closeclick', function() {
+  	map.fitBounds(bounds);
+	});
+  var infoWindowBalboa = getInfoWindow('balboa');
+  google.maps.event.addListener(infoWindowBalboa, 'closeclick', function() {
+  	map.fitBounds(bounds);
+	});
+  var infoWindowHonolua = getInfoWindow('honolua');
+  google.maps.event.addListener(infoWindowHonolua, 'closeclick', function() {
+  	map.fitBounds(bounds);
+	});
+  var infoWindowBeachClub = getInfoWindow('beachclub');
+  google.maps.event.addListener(infoWindowBeachClub, 'closeclick', function() {
+  	map.fitBounds(bounds);
+	});
+  
+  markerDuke.addListener('click', function(){
+    map.setZoom(15);
+    map.setCenter(markerDuke.getPosition());
+    infoWindowDuke.open(map, markerDuke);
+  });
+  markerDuke.addListener('mouseover', function(){
+   	pinkStar.fillColor = "white";
+    pinkStar.strokeColor = '#ff29a9';
+  	markerDuke.setIcon(pinkStar);
+  });
+  markerDuke.addListener('mouseout', function(){
+    pinkStar.fillColor = '#ff29a9';
+  	pinkStar.strokeColor = "white";
+   	markerDuke.setIcon(pinkStar);
+  });
+  
+  markerHonolua.addListener('click', function(){
+    map.setZoom(15);
+    map.setCenter(markerHonolua.getPosition());
+    infoWindowHonolua.open(map, markerHonolua);
+  });
+  markerHonolua.addListener('mouseover', function(){
+    	pinkStar.fillColor = "white";
+      pinkStar.strokeColor = '#ff29a9';
+    	markerHonolua.setIcon(pinkStar);
+  });
+  markerHonolua.addListener('mouseout', function(){
+      pinkStar.fillColor = '#ff29a9';
+    	pinkStar.strokeColor = "white";
+    	markerHonolua.setIcon(pinkStar);
+  });
+  
+  markerBalboa.addListener('click', function(){
+    map.setZoom(15);
+    map.setCenter(markerBalboa.getPosition());
+    infoWindowBalboa.open(map, markerBalboa);
+  });
+  markerBalboa.addListener('mouseover', function(){
+    	balboaStar.fillColor = "white";
+      balboaStar.strokeColor = '#ff29a9';
+    	markerBalboa.setIcon(balboaStar);
+  });
+  markerBalboa.addListener('mouseout', function(){
+      balboaStar.fillColor = '#ff29a9';
+    	balboaStar.strokeColor = "white";
+    	markerBalboa.setIcon(balboaStar);
+  });
+  
+  markerBeachClub.addListener('click', function(){
+    map.setZoom(15);
+    map.setCenter(markerBeachClub.getPosition());
+    infoWindowBeachClub.open(map, markerBeachClub);
+  });
+  markerBeachClub.addListener('mouseover', function(){
+    	pinkStar.fillColor = "white";
+      pinkStar.strokeColor = '#ff29a9';
+    	markerBeachClub.setIcon(pinkStar);
+  });
+  markerBeachClub.addListener('mouseout', function(){
+      pinkStar.fillColor = '#ff29a9';
+    	pinkStar.strokeColor = "white";
+    	markerBeachClub.setIcon(pinkStar);
+  });
+}
+
+function getInfoWindow(marker_name){
+	var contentString = getContentString(marker_name);
+	var infowindow = new google.maps.InfoWindow({
+      content: contentString
+      });
+  return infowindow
+}
+
+
+function getContentString(marker_name){
+  var content=  '<div id="img-content">'+
+     		'<div class="image-thumbnails">'
+        
+	if (marker_name == 'balboa'){
+  	content += '<a href="images/birds.jpg"><img src="images/birds.jpg"/></a>'+
+    		'<a href="images/mustardflowers.jpg"><img src="images/mustardflowers.jpg"/></a>'
   }
+  
+  if (marker_name == "duke"){
+  	content += '<a href="images/flowerschapel.jpg"><img src="images/flowerschapel.jpg"/></a>'+
+    		'<a href="images/sunsetduke.jpg"><img src="images/sunsetduke.jpg"/></a>'+
+        '<a href="images/chapel.jpg"><img src="images/chapel.jpg"/></a>'
+  }
+  
+  if (marker_name == "honolua"){
+    content += '<a href="images/rainbow.jpg"><img src="images/rainbow.jpg"/></a>'+
+          '<a href="images/poolsunset.jpg"><img src="images/poolsunset.jpg"/></a>'+
+          '<a href="images/tree.jpg"><img src="images/tree.jpg"/></a>'
+  }
+  
+  if (marker_name == "beachclub"){
+    content += '<a href="images/bluffsunset.jpg"><img src="images/bluffsunset.jpg"/></a>'+
+          '<a href="images/bluffview.jpg"><img src="images/bluffview.jpg"/></a>'
+  }
+  
+  content += ' </div>'+
+    					'</div>'
+	return content;
 }
 
 /**
