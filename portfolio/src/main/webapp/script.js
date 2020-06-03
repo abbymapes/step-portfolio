@@ -131,7 +131,7 @@ function deleteComments() {
 function createMap() {
   const map = new google.maps.Map(
       document.getElementById('map'),
-      {center: {lat: 40, lng: -120}, 
+      {center: {lat: 40, lng: -110}, 
       zoom: 3,
       styles: [
             {elementType: 'geometry', stylers: [{color: '#fffed6'}]},
@@ -214,6 +214,41 @@ function createMap() {
             }
           ]
         });
+
+    var places = [
+  	{
+			position: {lat: 21.011843, lng: -156.638599},
+			title: 'Honolua Bay',
+			label: 'Honolua Bay'
+    }, {
+      position: {lat: 36.0014, lng: -78.9382},
+      title: 'Duke University',
+      label: 'Duke University'
+    }, {
+      position: {lat: 33.606222, lng: -117.893036},
+      title: 'Balboa Island',
+     	label: 'Balboa Island'
+    }];
+  
+    var goldStar = {
+        path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+        fillColor: 'white',
+        fillOpacity: 0.8,
+        scale: 0.1,
+        strokeColor: 'black',
+        strokeWeight: 2
+    };
+    
+    // Create markers.
+	for (var i = 0; i < places.length; i++) {
+  	var marker = new google.maps.Marker({
+    	position: places[i].position,
+      title: places[i].title,
+      label: places[i].label,
+      map: map,
+      icon: goldStar
+    });
+  }
 }
 
 /**
