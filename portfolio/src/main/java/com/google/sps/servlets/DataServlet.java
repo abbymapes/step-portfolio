@@ -75,7 +75,7 @@ public class DataServlet extends HttpServlet {
     String userName = getParameter(request, "name-input", "Anonymous");
 
     if (userComment.equals("empty")){
-        response.sendRedirect("/index.html");
+        response.sendRedirect("/comments.html");
     }
 
     else{
@@ -90,7 +90,7 @@ public class DataServlet extends HttpServlet {
       datastore.put(commentEntity);
 
       // Redirect back to the HTML page.
-      response.sendRedirect("/index.html");
+      response.sendRedirect("/comments.html");
     }
   }
 

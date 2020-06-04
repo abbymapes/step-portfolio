@@ -403,6 +403,15 @@ function getContentString(marker_name){
 	return content;
 }
 
+function getMenuBar() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 /**
  * Sets all section colors to variations of a randomly generated color
  */
@@ -415,22 +424,24 @@ function setBackgroundColor(){
   const sect4 = document.getElementsByClassName("sect-4");
   const sect5 = document.getElementsByClassName("sect-5");
   const sect6 = document.getElementsByClassName("sect-6");
-  const sect7 = document.getElementsByClassName("sect-7");
   const goodbye = document.getElementsByClassName("goodbye");
   const grid = document.getElementsByClassName("grid-container");
+  const title = document.getElementsByClassName("title");
+  const musical = document.getElementById("musical-container");
+  const song = document.getElementById("song-container");
   const content = document.getElementById("content");
-  const comments = document.getElementsByClassName("comments");
 
   content.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
+  musical.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
+  song.style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
   intro[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
   goodbye[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
   grid[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
   sect1[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 90%)";
   sect2[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
   sect3[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
-  sect4[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 75%)";
-  sect5[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
-  sect6[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
-  sect7[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
-  comments[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 97%)";
+  title[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 75%)";
+  sect4[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
+  sect5[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
+  sect6[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
 }
