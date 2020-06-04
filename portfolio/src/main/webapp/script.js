@@ -282,18 +282,37 @@ function setMarkers(map){
   map.fitBounds(bounds);
   
   var infoWindowDuke = getInfoWindow('duke');
+ google.maps.event.addListener(map, 'click', function(){
+    infoWindowDuke.close(map, markerDuke);
+    map.fitBounds(bounds);
+  });
   google.maps.event.addListener(infoWindowDuke, 'closeclick', function() {
   	map.fitBounds(bounds);
 	});
+
   var infoWindowBalboa = getInfoWindow('balboa');
+  google.maps.event.addListener(map, 'click', function(){
+    infoWindowBalboa.close(map, markerBalboa);
+    map.fitBounds(bounds);
+  });
   google.maps.event.addListener(infoWindowBalboa, 'closeclick', function() {
   	map.fitBounds(bounds);
 	});
+
   var infoWindowHonolua = getInfoWindow('honolua');
+  google.maps.event.addListener(map, 'click', function(){
+    infoWindowHonolua.close(map, markerHonolua);
+    map.fitBounds(bounds);
+  });
   google.maps.event.addListener(infoWindowHonolua, 'closeclick', function() {
   	map.fitBounds(bounds);
 	});
+
   var infoWindowBeachClub = getInfoWindow('beachclub');
+  google.maps.event.addListener(map, 'click', function(){
+    infoWindowBeachClub.close(map, markerBeachClub);
+    map.fitBounds(bounds);
+  });
   google.maps.event.addListener(infoWindowBeachClub, 'closeclick', function() {
   	map.fitBounds(bounds);
 	});
