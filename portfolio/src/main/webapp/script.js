@@ -13,22 +13,6 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
- */
-
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!', '¡Ciao!'];
-
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
-}
-
-/**
  * Adds a random song to the page.
  */
 function addRandomSong() {
@@ -60,22 +44,6 @@ function addRandomMusical() {
 
   // Add it to the page.
   document.getElementById('musical-container').innerText = musical;
-}
-
-/**
- * Adds a random goodbye to the page.
- */
-function addRandomGoodbye() {
-  const goodbyes =
-      ['Goodbye!', 
-      'Au revoir!', 
-      'Ciao', 'Sayonara', 'Aloha',
-      'Arrivederci', 'Bon Voyage'];
-
-  // Pick a random goodbye.
-  const goodbye = goodbyes[Math.floor(Math.random() * goodbyes.length)];
-  // Add it to the page.
-  document.getElementById('goodbye-container').innerText = goodbye;
 }
 
 /**
@@ -116,7 +84,6 @@ function getComments() {
     })
   });
 }
-
 
 /**
  * Fetches quantity of comments specified by the user from the form.
@@ -252,6 +219,7 @@ function createMap() {
 	setMarkers(map);
 }
 
+/** Sets markers (of favorite places) on map. */
 function setMarkers(map){
   const pinkStar = {
       path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
@@ -425,7 +393,7 @@ function getInfoWindow(marker_name){
   return infowindow
 }
 
-
+/** Returns html content for specified marker's info window */
 function getContentString(marker_name){
   var content=  '<div id="img-content">'+
      		'<div class="image-thumbnails">'
@@ -478,6 +446,8 @@ function setBackgroundColor(){
   const sect4 = document.getElementsByClassName("sect-4");
   const sect5 = document.getElementsByClassName("sect-5");
   const sect6 = document.getElementsByClassName("sect-6");
+  const sect7 = document.getElementsByClassName("sect-7");
+  const sect8 = document.getElementsByClassName("sect-8");
   const goodbye = document.getElementsByClassName("goodbye");
   const grid = document.getElementsByClassName("grid-container");
   const title = document.getElementsByClassName("title");
@@ -494,8 +464,10 @@ function setBackgroundColor(){
   sect1[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 90%)";
   sect2[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
   sect3[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
-  title[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 75%)";
-  sect4[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 70%)";
-  sect5[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
-  sect6[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 65%)";
+  title[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 95%)";
+  sect4[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 90%)";
+  sect5[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
+  sect6[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
+  sect7[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 85%)";
+  sect8[0].style.backgroundColor = "hsl("+ hue_number + ", 100%, 80%)";
 }

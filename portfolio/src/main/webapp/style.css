@@ -85,6 +85,15 @@ h2{
   color: hsl(250, 100%, 75%);
 }
 
+.comment-link{
+  color: rgb(0, 0, 0);
+}
+
+.comment-link:hover {
+  font-size: 13pt;
+  color: hsl(0, 0%, 33%);
+}
+
 .row {
   display: flex;
   width: 100%;
@@ -201,39 +210,40 @@ h2{
   grid-area: fun; 
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
-  background-color: hsl(250, 100%, 75%);
+  background-color: hsl(250, 100%, 95%);
 }
 
 .sect-4 { 
   grid-area: dogs; 
-  background-color: hsl(250, 100%, 70%);
+  background-color: hsl(250, 100%, 90%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
 .sect-5 {
   grid-area: song; 
-  background-color: hsl(250, 100%, 65%);
+  background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
 .sect-6 { 
   grid-area: art; 
-  background-color: hsl(250, 100%, 65%);
-  outline-style: solid;
-  outline-color: hsl(0, 0%, 100%);
-}
-
-.more { 
-  grid-area: more; 
+  background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
 .sect-7 {
-  grid-area: social; 
-  background-color: hsl(250, 100%, 65%);
+  grid-area: musical; 
+  background-color: hsl(250, 100%, 85%);
+  outline-style: solid;
+  outline-color: hsl(0, 0%, 100%);
+}
+
+.sect-8 {
+  grid-area: places; 
+  background-color: hsl(250, 100%, 80%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
@@ -276,18 +286,19 @@ h2{
 .grid-container {
   display: grid;
   grid-template-areas:
-    'intro intro'
-    'space space'
-    'school school'
-    'home work'
-    'fun fun'
-    'dogs dogs'
-    'song art'
-    'more more'
-    'social social'
-    'footer footer';
+    'intro intro intro intro intro intro'
+    'space space space space space space'
+    'school school school school school school'
+    'home home home work work work'
+    'fun fun fun fun fun fun'
+    'dogs dogs dogs dogs dogs dogs'
+    'song song art art musical musical'
+    'places places places places places places'
+    'more more more more more more'
+    'social social social social social social'
+    'footer footer footer footer footer footer';
   grid-gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   background-color: hsl(250, 100%, 95%);
   padding: 10px;
   align-content: center;
@@ -307,6 +318,8 @@ h2{
     'dogs'
     'song'
     'art'
+    'musical'
+    'places'
     'more'
     'social'
     'footer';
@@ -321,7 +334,7 @@ h2{
 
 .grid-container > div {
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 5px;
   align-items: center;
 }
 
@@ -508,7 +521,7 @@ html,body{
 
 #map {
   border: thin solid white;
-  height: 500px;
+  height: 400px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -554,6 +567,23 @@ html,body{
 }
 
 .image-thumbnails img:hover {
+  border: thick solid white;
+  transform: scale(1.3);
+}
+
+.image-thumbnails-art {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-thumbnails-art img {
+  margin: 10px;
+  max-height: 300px;
+  max-width: 300px;
+}
+
+.image-thumbnails-art img:hover {
   border: thick solid white;
   transform: scale(1.3);
 }

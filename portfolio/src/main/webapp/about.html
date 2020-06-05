@@ -8,9 +8,10 @@
         <link href='https://fonts.googleapis.com/css?family=GFS Neohellenic' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="script.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjXCSPI4yzByHxDXafuG1ScI5opZmOAyg"></script>
     </head>
 
-    <body>
+    <body onload = "createMap();">
       <div id = "content" class = "rainbow-text">
       <div class="topnav" id="myTopnav">
         <a href="/index.html" class="active">Home</a>
@@ -37,7 +38,7 @@
                         </div>
 
                         <div class="sect-1">
-                          <p>I am an incoming Junior at Duke University. I am pursuing a 
+                          <p>I am an incoming Junior at Duke University.I am pursuing a 
                           <abbr title="Bachelor of Science Degree">B.S.</abbr> 
                           in Computer Science and a certificate in 
                           <a href = "https://iss.duke.edu/undergraduate-certificate"
@@ -64,39 +65,44 @@
                         </div>
 
                         <div class="title">
-                            <h3 style = "font-size: 25px">Things That Make Me Happy</h3>
+                            <h3 style = "font-size: 32px">Things That Make Me Happy</h3>
                         </div>
 
                         <div class="sect-4">
-                          <p>My Dogs.</p>
+                          <p style = "font-size: 14pt">My Dogs.</p>
                           <img src="/images/dogs.png" alt = "Picture of my Dogs."/>
+                          <p> Yes, there are three of them. </p>
                         </div>
 
                         <div class="sect-5">
-                          <p>Playing the guitar.</p>
+                          <p style = "font-size: 14pt">Playing the guitar.</p>
                           <p><button onclick="addRandomSong()">My Favorite Songs to Play</button>
                           <div id="song-container"></div></p>
-                    
-                          <p>Musicals.</p>
-                          <p><button onclick="addRandomMusical()">My Favorite Musicals</button>
-                          <div id="musical-container"></div></p>
                         </div>
 
                         <div class="sect-6">
-                          <p>Making art.</p>
-                          <p><button onclick="document.location = 'artimages.html'">
-                                     Some of my Art</button></p>
-                          <p>Hiking, exploring, looking at, and traveling the world. </p>
-                          <p><button onclick="document.location = 'images.html'">
-                                     My Happy Places</button></p>
+                          <p style = "font-size: 14pt">Creating art.</p>
+                          <p><button onclick = "document.location = 'artimages.html'">Check it out</button>
+                        </div>
+
+                        <div class="sect-7">
+                          <p style = "font-size: 14pt">Musicals.</p>
+                            <p><button onclick="addRandomMusical()">My Favorite Musicals</button>
+                          <div id="musical-container"></div></p>
+                        </div>
+
+                        <div class="sect-8">
+                          <div class="header-places"><h3 style = "font-size: 32px">My Happy Places</h3></div>
+                          <br>
+                          <div id="img-content">
+                            <div id="map"></div>
+                          </div>
                         </div>
 
                         <div class="goodbye">
                           <p>I hope you enjoyed learning a little more about
                           me! <br><br>
-                          Check out the rest of my portfolio before you say:</p>
-                          <p><button onclick="addRandomGoodbye()">Click me!</button>
-                          <div id="goodbye-container"></div></p>
+                          Check out the rest of my portfolio, then <a href = "/comments.html" class = 'comment-link'>leave a comment</a>.</p>
                           <br>
                         </div>
                     </div>
