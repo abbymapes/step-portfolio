@@ -79,18 +79,31 @@ function addRandomGoodbye() {
 }
 
 /**
+ * Fetches comments login status the servers.
+ */
+function getStatus() {
+  fetch('/login').then(response => response.json()).then((status) => {
+      console.log(status);
+      const form = document.getElementById('comment-form');
+      form.innerHTML = status;
+      getComments();
+    });
+}
+
+/**
  * Fetches comments from the servers and adds them to the DOM.
  */
 function getComments() {
-  var quantity = getQuantity();
-  fetch('/data?quantity='+ quantity).then(response => response.json()).then((comments) => {
-    const dataListElement = document.getElementById('comment-container');
-    dataListElement.innerHTML = '';
-    comments.forEach((comment) => {
-      dataListElement.appendChild(createTableRowElement(comment));
+    var quantity = getQuantity();
+    fetch('/data?quantity='+ quantity).then(response => response.json()).then((comments) => {
+        const dataListElement = document.getElementById('comment-container');
+        dataListElement.innerHTML = '';
+        comments.forEach((comment) => {
+        dataListElement.appendChild(createTableRowElement(comment));
     })
   });
 }
+
 
 /**
  * Fetches quantity of comments specified by the user from the form.
@@ -109,7 +122,12 @@ function createTableRowElement(commentObj) {
   const thElement = document.createElement('th');
   const tdElement = document.createElement('td');
   
-  thElement.innerText = commentObj.name;
+  thElement.innerHTML = '<abbr title="' + commentObj.email + '"'+ 
+    'style = "text-decoration: none">' +
+    '<a href = "mailto:' + commentObj.email + '" target="_blank"'+
+    'style = "text-decoration: none">' +
+    commentObj.name +
+    '</a></abbr>';
   tdElement.innerText = '"' + commentObj.comment + '"';
 
   thText = thElement.outerHTML;

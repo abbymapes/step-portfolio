@@ -55,8 +55,9 @@ public class DataServlet extends HttpServlet {
         else{
             String userComment = (String) entity.getProperty("comment");
             String name = (String) entity.getProperty("name");
+            String userEmail = (String) entity.getProperty("email");
 
-            Comment comment = new Comment(name, userComment);
+            Comment comment = new Comment(name, userComment, userEmail);
             comments.add(comment);
         }
         ++i;
@@ -71,8 +72,9 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
+    String userEmail = request.getParameter("email");
     String userComment = getParameter(request, "text-input", "empty");
-    String userName = getParameter(request, "name-input", "Anonymous");
+    String userName = getParameter(request, "name-input", userEmail);
 
     if (userComment.equals("empty")){
         response.sendRedirect("/comments.html");
@@ -83,8 +85,10 @@ public class DataServlet extends HttpServlet {
 
       Entity commentEntity = new Entity("Comment");
       commentEntity.setProperty("comment", userComment);
+      commentEntity.setProperty("email", userEmail);
       commentEntity.setProperty("timestamp", timestamp);
       commentEntity.setProperty("name", userName);
+      System.out.println(userEmail);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       datastore.put(commentEntity);
