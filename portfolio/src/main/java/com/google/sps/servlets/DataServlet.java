@@ -29,10 +29,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gson.Gson;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.FileReader; 
+import java.io.File;
+import java.nio.file.Files; 
+import java.nio.file.Paths;
+import java.util.Random; 
 
 /** Servlet that returns comments. */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
+
+    static final String ANIMAL_FILE_STRING = "/files/animals.txt";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -97,23 +107,40 @@ public class DataServlet extends HttpServlet {
     }
   }
 
-  private String convertToJsonUsingGson(List<String> list) {
-    Gson gson = new Gson();
-    String json = gson.toJson(list);
-    return json;
-  }
-
     /**
    * @return the request parameter, or the default value if the parameter
    *         was not specified by the client
    */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
-    if (value == null || value.isEmpty() || value.split(" ").length == 0 || value.equals("Write Comment Here")) {
-      return defaultValue;
-    }
+    String animal = "";
 
+    if (value == null || value.isEmpty() || value.split(" ").length == 0) {
+        if (defaultValue.equals("N/A")){
+            try {
+                animal = getRandomAnimal();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return "Anonymous " + animal;
+        }
+        return defaultValue;
+    }
     return value;
+  }
+  /** Returns a random animal */
+  private String getRandomAnimal() throws Exception{
+    String animalString = new String(Files.readAllBytes(Paths.get(getClass().getResource(ANIMAL_FILE_STRING).getFile())));
+    String[] animals = animalString.split("\n");
+    Random rand = new Random();
+    String animal = animals[rand.nextInt(animals.length)];
+    String[] animal_words = animal.split(" ");
+    for (int i = 0; i < animal_words.length; ++i){
+        String word = animal_words[i];
+        animal_words[i] = word.substring(0,1).toUpperCase() + word.substring(1);
+    }
+    String animal_proper = String.join(" ", animal_words);
+    return animal_proper;
   }
 
 

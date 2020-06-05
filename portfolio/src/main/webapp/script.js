@@ -79,15 +79,28 @@ function addRandomGoodbye() {
 }
 
 /**
- * Fetches comments login status the servers.
+ * Fetches comment form the servers based on input.
  */
-function getStatus() {
-  fetch('/login').then(response => response.json()).then((status) => {
-      console.log(status);
+function setAuthMode(input) {
+  fetch(input).then(response => response.json()).then((status) => {
       const form = document.getElementById('comment-form');
       form.innerHTML = status;
       getComments();
     });
+}
+
+/**
+ * Sets user mode for commenting.
+ */
+function getUserMode() {
+    setAuthMode("/login");
+}
+
+/**
+ * Sets guest mode for commenting.
+ */
+function getGuestMode() {
+    setAuthMode("/login?guest=true");
 }
 
 /**
@@ -121,13 +134,18 @@ function createTableRowElement(commentObj) {
   const trElement = document.createElement('tr');
   const thElement = document.createElement('th');
   const tdElement = document.createElement('td');
-  
-  thElement.innerHTML = '<abbr title="' + commentObj.email + '"'+ 
-    'style = "text-decoration: none">' +
-    '<a href = "mailto:' + commentObj.email + '" target="_blank"'+
-    'style = "text-decoration: none">' +
-    commentObj.name +
-    '</a></abbr>';
+
+  if (commentObj.email == "N/A" || commentObj.email == "undefined"){
+      thElement.innerText = commentObj.name;
+  }
+  else{
+    thElement.innerHTML = '<abbr title="' + commentObj.email + '"'+ 
+        'style = "text-decoration: none">' +
+        '<a href = "mailto:' + commentObj.email + '" target="_blank"'+
+        'style = "text-decoration: none">' +
+        commentObj.name +
+        '</a></abbr>';
+    }
   tdElement.innerText = '"' + commentObj.comment + '"';
 
   thText = thElement.outerHTML;
@@ -275,7 +293,6 @@ function setMarkers(map){
     icon: pinkStar
   });
   
-    
 	var markerBalboa = new google.maps.Marker({
     position: {lat: 33.606222, lng: -117.893036},
     title: 'Balboa Island',

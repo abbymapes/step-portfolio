@@ -13,7 +13,6 @@
 // limitations under the License.
 
 package com.google.sps.servlets;
-
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -29,60 +28,103 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.FileReader; 
+import java.io.File;
+import java.nio.file.Files; 
+import java.nio.file.Paths;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
+  static final String COMMENT_FORM_FILE_STRING = "/files/comment-form.txt";
+  static final String USER_GREETING_FILE_STRING = "/files/user-greeting.txt";
+  static final String GUEST_GREETING_FILE_STRING = "/files/guest-greeting.txt";
+  static final String LOGIN_OPTIONS_FILE_STRING = "/files/login-options.txt";
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html");
+    String guest = request.getParameter("guest");
     PrintWriter out = response.getWriter();
-    UserService userService = UserServiceFactory.getUserService();
 
-    // If user is not logged in, show a login form (could also redirect to a login page)
-    if (!userService.isUserLoggedIn()) {
+    UserService userService = UserServiceFactory.getUserService();
+    String greeting = "";
+    String userEmail = "N/A";
+    String commentForm = "";
+
+    // Generates greeting for guests
+    if (guest != null && guest.equals("true")){
+        String loginUrl = userService.createLoginURL("/comments.html");
+        try {
+            greeting = getGuestGreeting(loginUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Generates greeting for users
+    else if(userService.isUserLoggedIn()){
+        userEmail = userService.getCurrentUser().getEmail();
+        String logoutUrl = userService.createLogoutURL("/comments.html");
+        try {
+            greeting = getUserGreeting(userEmail, logoutUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Shows login options, if user is not logged in
+    else {
       String loginUrl = userService.createLoginURL("/comments.html");
-      String output = "<p>To leave a comment, login <a href=\"" + loginUrl + "\">here</a>.</p>";
+      String loginOptions = "";
+        try {
+            loginOptions = getLoginOptions(loginUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
       Gson gson = new Gson();
-      out.println(gson.toJson(output));
+      out.println(gson.toJson(loginOptions));
       return;
     }
 
-    // User is logged in, so the request can proceed
-    String userEmail = userService.getCurrentUser().getEmail();
-    String logoutUrl = userService.createLogoutURL("/comments.html");
-    
-    String output = "";
-    output = "<p>You are logged in as: " + userEmail + "</p>";
-    output += "<p>To comment from a different email, <a href=\"" + logoutUrl + "\">logout</a>.</p>";
-    output += "Leave a display name and your comment below. Thanks for the feedback!</p>";
-    output += "<form action = \"/data?email="+ userEmail + "\" method = \"POST\">"+
-                "<p style=\"font-size:18pt\"><br> Leave a Comment: <br></p>"+
-                "<textarea name=\"name-input\" placeholder=\"Write Display Name Here\" id = \"name-input\"></textarea>"+
-                "<br><br>"+
-                "<textarea name=\"text-input\" placeholder=\"Write Comment Here\"></textarea>"+
-                "<br><br>"+
-                "<input type=\"submit\"/>"+
-                "<br><br>"+
-                "</form>";
+    // Generates comment form
+    try {
+        commentForm = createForm(greeting, userEmail);
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     Gson gson = new Gson();
-    response.getWriter().println(gson.toJson(output));
+    response.getWriter().println(gson.toJson(commentForm));
   }
 
-  /** Returns the nickname of the user with id, or null if the user has not set a nickname. */
-  private String getUserNickname(String id) {
-    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Query query =
-        new Query("UserInfo")
-            .setFilter(new Query.FilterPredicate("id", Query.FilterOperator.EQUAL, id));
-    PreparedQuery results = datastore.prepare(query);
-    Entity entity = results.asSingleEntity();
-    if (entity == null) {
-      return null;
-    }
-    String nickname = (String) entity.getProperty("nickname");
-    return nickname;
+  /** Returns a the comment form, along with the specified greeting */
+  private String createForm(String greeting, String userEmail) throws Exception{
+    String commentFormHtml = new String(Files.readAllBytes(Paths.get(getClass().getResource(COMMENT_FORM_FILE_STRING).getFile())));
+    commentFormHtml = String.format(commentFormHtml, greeting, userEmail);
+    return commentFormHtml;
+  }
+  
+  /** Returns a user greeting string */
+  private String getUserGreeting(String userEmail, String logoutUrl) throws Exception{
+    String greetingTemplate = new String(Files.readAllBytes(Paths.get(getClass().getResource(USER_GREETING_FILE_STRING).getFile())));
+    String userGreeting = String.format(greetingTemplate, userEmail, logoutUrl);
+    return userGreeting;
+  }
+
+  /** Returns a guest greeting string */
+  private String getGuestGreeting(String loginUrl) throws Exception{
+    String greetingTemplate = new String(Files.readAllBytes(Paths.get(getClass().getResource(GUEST_GREETING_FILE_STRING).getFile())));
+    String guestGreeting = String.format(greetingTemplate, loginUrl);
+    return guestGreeting;
+  }
+
+  /** Returns login options string */
+  private String getLoginOptions(String loginUrl) throws Exception{
+    String greetingTemplate = new String(Files.readAllBytes(Paths.get(getClass().getResource(LOGIN_OPTIONS_FILE_STRING).getFile())));
+    String loginOptions = String.format(greetingTemplate, loginUrl);
+    return loginOptions;
   }
 }
 
