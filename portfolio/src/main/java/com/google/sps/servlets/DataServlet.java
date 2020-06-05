@@ -88,7 +88,6 @@ public class DataServlet extends HttpServlet {
       commentEntity.setProperty("email", userEmail);
       commentEntity.setProperty("timestamp", timestamp);
       commentEntity.setProperty("name", userName);
-      System.out.println(userEmail);
 
       DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
       datastore.put(commentEntity);

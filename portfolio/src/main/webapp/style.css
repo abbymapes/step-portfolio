@@ -501,6 +501,11 @@ html,body{
   resize:none;
 }
 
+#name-input{
+  height: 14pt;
+  resize:none;
+}
+
 #map {
   border: thin solid white;
   height: 500px;
