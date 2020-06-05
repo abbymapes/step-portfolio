@@ -102,7 +102,7 @@ function createTableRowElement(commentObj) {
   const thElement = document.createElement('th');
   const tdElement = document.createElement('td');
 
-  if (commentObj.email == "N/A" || commentObj.email == "undefined"){
+  if (commentObj.email == "N/A" || commentObj.email == null){
       thElement.innerText = commentObj.name;
   }
   else{
