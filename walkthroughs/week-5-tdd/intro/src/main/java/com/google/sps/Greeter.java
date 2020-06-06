@@ -22,6 +22,8 @@ public class Greeter {
    * Returns a greeting for the given name.
    */
   public String greet(String name) {
+    name = name.replaceAll(" ", "");
+    name = name.substring(0,1).toUpperCase() + name.substring(1);
     return "Hello " + name;
   }
 }
