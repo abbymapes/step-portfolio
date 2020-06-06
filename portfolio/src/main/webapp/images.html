@@ -6,29 +6,66 @@
     <title>My Happy Places</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDjXCSPI4yzByHxDXafuG1ScI5opZmOAyg"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="script.js"></script>
   </head>
-  <body onload="createMap();">
-
-    <div id="img-content">
-      <p><button onclick="document.location = 'index.html'" 
-               class="rainbow-text">Home</button></p>
-      <div id="img-heading" class = "rainbow-text"><h1>My Happy Places</h1></div>
-      
-      <div id="map"></div>
-
-      <div class="image-thumbnails">
-        <a href="images/flowerschapel.jpg"><img src="images/flowerschapel.jpg"/></a>
-        <a href="images/rainbow.jpg"><img src="images/rainbow.jpg"/></a>
-        <a href="images/poolsunset.jpg"><img src="images/poolsunset.jpg"/></a>
-        <a href="images/tree.jpg"><img src="images/tree.jpg"/></a>
-        <a href="images/sunsetduke.jpg"><img src="images/sunsetduke.jpg"/></a>
-        <a href="images/birds.jpg"><img src="images/birds.jpg"/></a>
-        <a href="images/bluffsunset.jpg"><img src="images/bluffsunset.jpg"/></a>
-        <a href="images/bluffview.jpg"><img src="images/bluffview.jpg"/></a>
-        <a href="images/chapel.jpg"><img src="images/chapel.jpg"/></a>
-        <a href="images/mustardflowers.jpg"><img src="images/mustardflowers.jpg"/></a>
+     <body onload="createMap();">
+      <div id = "content" class = "rainbow-text">
+      <div class="topnav" id="myTopnav">
+        <a href="/index.html" class="active">Home</a>
+        <a href="/about.html">About Me</a>
+        <a href="/resume.html">Resume</a>
+        <a href="/comments.html">Comments</a>
+        <a href="javascript:void(0);" class="icon" onclick="getMenuBar()">
+          <i class="fa fa-bars"></i>
+        </a>
       </div>
-    </div>
-  </body>
-</html>
+            <div class="grid-overall-container">
+                <div class="side"></div>
+
+                <div class="center">
+                  <p style="text-align:left"><button onclick="document.location = '/about.html'">Back</button></p>
+                    <div class="header"><h1>My Happy Places</h1></div>
+                    <br>
+                    <div id="img-content">
+                      <div id="map"></div>
+                    </div>
+                    <div class="bottom">
+                        <div class="row">
+                          <div class="column"> </div>
+                          <div class="column">
+                            <div class = "row">
+                              <div class="column">
+                                <div class="logo">
+                                   <a href = "https://www.linkedin.com/in/abbymapes" target="_blank">
+                                    <img src = "/images/linkedin.png" alt = "LinkedIn Logo." 
+                                        width = "100%"/></a>
+                                </div>
+                              </div>
+
+                              <div class="column">
+                                <div class="logo">
+                                   <a href = "https://github.com/abbymapes" target="_blank">
+                                    <img src = "/images/git.png" alt = "GitHub Logo." 
+                                        width = "100%"/></a>
+                                </div>
+                              </div>
+
+                              <div class="column">
+                                <div class="logo">
+                                   <a href = "mailto:abigail.mapes@duke.edu" target="_blank">
+                                    <img src = "/images/email.png" alt = "Email Logo." 
+                                        width = "100%"/></a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="column"> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class = "side"></div>
+            </div>
+        </div>
+    </body>
+  </html>

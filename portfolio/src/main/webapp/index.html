@@ -9,145 +9,63 @@
         <script src="script.js"></script>
     </head>
 
-    <body onload="getComments()">
-        <div id = "content">
+    <body>
+        <div id = "content" class = "rainbow-text">
             <div class="grid-overall-container">
 
-                <div class="side"></div>
+                <div class="left"> </div>
 
                 <div class="center">
-                    <div class="header rainbow-text"><h1>Abby's Portfolio</h1></div>
+                  <div class = "home-grid-container">
+                    <div class = "info">
+                      <h1 style:"font-size: 50pt">Abby Mapes</h1>
+                      <h2 class = "sub-title"> Duke University, Computer Science</h2>
+                      <br>
 
-                    <div class="grid-container">
-                        <div class="intro">
-                          <p>Welcome to my portfolio! It's a pleasure to have you here!</p>
-                          <p>Don't like this color?</p>
-                          <button onclick="setBackgroundColor()" class="rainbow-text">Click Me!</button>
-                        </div>
-
-                        <div class="aboutme rainbow-text"><h2>About Me</h2></div> 
-
-                        <div class="sect-1">
-                          <p>I am an incoming Junior at Duke University. I am pursuing a 
-                          <abbr title="Bachelor of Science Degree">B.S.</abbr> 
-                          in Computer Science and a certificate in 
-                          <a href = "https://iss.duke.edu/undergraduate-certificate"
-                          target="_blank">Information 
-                          Science + Studies</a>.
-                          <br>
-                          <br>
-                          <img src="/images/duke.png" alt = "Duke Logo."/></p>  
-
-                          <h3 class = "rainbow-text">Coding Languages</h3>
-                          <p><b>Expert:</b> Java, Python, C</p>
-                          <p><b>Proficient:</b> HTML/CSS, SQL, MIPS, R</p>
-                        </div>
-
-                        <div class="sect-2">
-                          <p>I was born and raised in Los Angeles.<br>
-                          <img src="/images/losangeles.png" alt = "Picture of Los Angeles." /></p>
-                        </div>
-
-                        <div class="sect-3">
-                          <p> I am currently a <abbr title="Student Training in Engineering Program">
-                          STEP</abbr>  intern at Google. <br>
-                          <img src="/images/google.gif" alt = "Google gif." /></p>
-                        </div>
-
-                        <div class="title rainbow-text">
-                            <h3 style = "font-size: 25px">Things That Make Me Happy</h3>
-                        </div>
-
-                        <div class="sect-4">
-                          <p>My Dogs.</p>
-                          <img src="/images/dogs.png" alt = "Picture of my Dogs."/>
-                        </div>
-
-                        <div class="sect-5">
-                          <p>Playing the guitar.</p>
-                          <p><button onclick="addRandomSong()">My Favorite Songs to Play</button>
-                          <div id="song-container" class="rainbow-text"></div></p>
-                    
-                          <p>Musicals.</p>
-                          <p><button onclick="addRandomMusical()">My Favorite Musicals</button>
-                          <div id="musical-container" class="rainbow-text"></div></p>
-                        </div>
-
-                        <div class="sect-6">
-                          <p>Making art.</p>
-                          <p><button onclick="document.location = 'artimages.html'" 
-                                     class="rainbow-text">
-                                     Some of my Art</button></p>
-                          <p>Hiking, exploring, looking at, and traveling the world. </p>
-                          <p><button onclick="document.location = 'images.html'" 
-                                     class="rainbow-text">
-                                     My Happy Places</button></p>
-                        </div>
-
-                        <div class = "more rainbow-text">
-                          <h2>Want to learn more?</h2>
-                        </div>
-
-                        <div class="sect-7">
-                          <p>Check out my:</p>
-                          <div class = "logo">
-                            <a href = "https://www.linkedin.com/in/abbymapes" target="_blank">
-                            <img src = "/images/linkedin.png" alt = "LinkedIn Logo." 
-                            width = "100 px"/></a>
-                          </div>
-                          <br>
-                          <div class = "logo">
-                            <a href = "https://github.com/abbymapes" target="_blank">
-                            <img src = "/images/git.png" alt = "GitHub Logo." 
-                                 width = "100 px"/></a>
-                          </div>
-                          <br>
-                        </div>
-
-                        <div class="goodbye">
-                          <p>I hope you enjoyed learning a little more about 
-                          me! Sadly, it is time to say:</p>
-                          <p><button onclick="addRandomGoodbye()">Click me!</button>
-                          <div id="goodbye-container" class="rainbow-text"></div></p>
-                          <br>
-                        </div>
-
-                        <div class="comm-title rainbow-text">
-                            <h3 style = "font-size: 25px">Comments</h3>
-                        </div>
-                        
-                        <div class="comments">
-                          <form action = "/data" method = "POST">
-                            <p> Leave a Comment: </p>
-                            <textarea name="name-input" placeholder="Write Name Here" id = "name-input"></textarea>
-                            <textarea name="text-input" placeholder="Write Comment Here"></textarea>
-                            <br><br>
-                            <input type="submit" class = "rainbow-text"/>
-                            <br><br>
-                          </form>
-
-                          <table id = "comment-container"></table>
-
-                            <form action = "/data" method = "POST">
-                            <br>
-                            <label for="quantity" class="small-text">Maximum Number of Comments to Display:</label>
-                                <select name="quantity" id="quantity" onchange="getComments()">
-                                <option value="5" selected="true">5</option>
-                                <option value="10">10</option>
-                                <option value="15">15</option>
-                                <option value="all">All</option>
-                                </select>
-                                <br><br>
-                            </form>
-
-                          <button onclick="deleteComments()" class="rainbow-text">
-                              Delete Comments</button>
-                        </div>
+                      <img src="/images/meSquare.jpg" alt = "Self Portrait." class= "avatar">
+                      
+                      
+                      <a href = "/about.html" style = "text-decoration: none"><h2 class = "pages">About Me</h2></a>
+                      <a href = "/resume.html" style = "text-decoration: none"><h2 class = "pages">Resume</h2></a>
+                      <a href = "/comments.html" style = "text-decoration: none"><h2 class = "pages">Comments</h2></a>
                     </div>
-                    <div class="bottom rainbow-text"><h1> </h1></div>
-                </div>
 
-                <div class = "side"></div>
+                    <div class = "linkedin">
+                      <div class="row">
+                        <div class="column"> </div>
+                        <div class="column">
+                          <div class = "row">
+                            <div class="column">
+                              <div class="logo">
+                                 <a href = "https://www.linkedin.com/in/abbymapes" target="_blank">
+                                  <img src = "/images/linkedin.png" alt = "LinkedIn Logo." 
+                                      width = "100%"/></a>
+                              </div>
+                            </div>
+
+                            <div class="column">
+                              <div class="logo">
+                                 <a href = "https://github.com/abbymapes" target="_blank">
+                                  <img src = "/images/git.png" alt = "GitHub Logo." 
+                                      width = "100%"/></a>
+                              </div>
+                            </div>
+
+                            <div class="column">
+                              <div class="logo">
+                                 <a href = "mailto:abigail.mapes@duke.edu" target="_blank">
+                                  <img src = "/images/email.png" alt = "Email Logo." 
+                                      width = "100%"/></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="column"> </div>
+                      </div>    
+                    </div>
+                  </div>
+                </div>
+                <div class = "right"> </div>
             </div>
         </div>
     </body>

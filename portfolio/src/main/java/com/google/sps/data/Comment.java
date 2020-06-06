@@ -23,9 +23,11 @@ package com.google.sps.data;
 public class Comment {
   private String name;
   private String comment;
+  private String email;
 
-  public Comment(String name, String comment) {
+  public Comment(String name, String comment, String email) {
     this.name = name;
     this.comment = comment;
+    this.email = email;
   }
 }
