@@ -185,63 +185,63 @@ h2{
   grid-area: space; 
 }
 
-.sect-1 { 
+.sect-school { 
   grid-area: school; 
   background-color: hsl(250, 100%, 90%);
   outline-style: solid;
   outline-color: rgba(255, 255, 255);
 }
 
-.sect-2 { 
+.sect-home { 
   grid-area: home; 
   background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
-.sect-3 { 
+.sect-work { 
   grid-area: work; 
   background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
-.title { 
+.fun-title { 
   grid-area: fun; 
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
   background-color: hsl(250, 100%, 95%);
 }
 
-.sect-4 { 
+.sect-dogs { 
   grid-area: dogs; 
   background-color: hsl(250, 100%, 90%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
-.sect-5 {
+.sect-song {
   grid-area: song; 
   background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
-.sect-6 { 
+.sect-art { 
   grid-area: art; 
   background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
-.sect-7 {
+.sect-musical {
   grid-area: musical; 
   background-color: hsl(250, 100%, 85%);
   outline-style: solid;
   outline-color: hsl(0, 0%, 100%);
 }
 
-.sect-8 {
+.sect-map {
   grid-area: places; 
   background-color: hsl(250, 100%, 80%);
   outline-style: solid;
@@ -341,9 +341,7 @@ h2{
 /* Container to center grid */
 .left {grid-area: left;}
 .right {grid-area: right;}
-
 .center {grid-area: middle;}
-
 .grid-overall-container{
     display: grid;
     grid-template-areas: 'left middle right';
@@ -475,6 +473,7 @@ table {
   border-spacing:0 15px;
   table-layout: fixed;
 }
+
 th {
   border: 1px hsl(0, 0%, 50%) solid;
   text-align: left;
@@ -507,11 +506,6 @@ tr:hover {
 html,body{
   height: 100%;
   word-break: normal;
-}
-
-#name-input{
-  height: 14pt;
-  resize:none;
 }
 
 #name-input{

@@ -440,17 +440,17 @@ function getMenuBar() {
 function setBackgroundColor(){
   const hue_number = (Math.floor(Math.random() * 35) + 1) * 10;
   const intro = document.getElementsByClassName("intro");
-  const sect1 = document.getElementsByClassName("sect-1");
-  const sect2 = document.getElementsByClassName("sect-2");
-  const sect3 = document.getElementsByClassName("sect-3");
-  const sect4 = document.getElementsByClassName("sect-4");
-  const sect5 = document.getElementsByClassName("sect-5");
-  const sect6 = document.getElementsByClassName("sect-6");
-  const sect7 = document.getElementsByClassName("sect-7");
-  const sect8 = document.getElementsByClassName("sect-8");
+  const sect1 = document.getElementsByClassName("sect-school");
+  const sect2 = document.getElementsByClassName("sect-home");
+  const sect3 = document.getElementsByClassName("sect-work");
+  const sect4 = document.getElementsByClassName("sect-dogs");
+  const sect5 = document.getElementsByClassName("sect-song");
+  const sect6 = document.getElementsByClassName("sect-art");
+  const sect7 = document.getElementsByClassName("sect-musical");
+  const sect8 = document.getElementsByClassName("sect-map");
   const goodbye = document.getElementsByClassName("goodbye");
   const grid = document.getElementsByClassName("grid-container");
-  const title = document.getElementsByClassName("title");
+  const title = document.getElementsByClassName("fun-title");
   const musical = document.getElementById("musical-container");
   const song = document.getElementById("song-container");
   const content = document.getElementById("content");
