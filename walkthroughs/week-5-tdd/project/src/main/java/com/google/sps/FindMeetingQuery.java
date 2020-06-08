@@ -29,33 +29,53 @@ public final class FindMeetingQuery {
   public static final Comparator<TimeRange> ORDER_BY_START = TimeRange.ORDER_BY_START;
 
   Collection<TimeRange> possibleTimes = new ArrayList<>();
-  ArrayList<TimeRange> allConflicts = new ArrayList<>();
-  ArrayList<TimeRange> conflicts = new ArrayList<>();
+  //ArrayList<TimeRange> allConflicts = new ArrayList<>();
+  //ArrayList<TimeRange> conflicts = new ArrayList<>();
   long requestDuration;
-  Collection<String> attendees;
-  
+  //Collection<String> attendees;
+  //Collection<String> optionalAttendees;
+
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     requestDuration = request.getDuration();
-    attendees = request.getAttendees();
+    Collection<String> attendees = request.getAttendees();
+    Collection<String> optionalAttendees = request.getOptionalAttendees();
+    Set<String> mandatoryAttendees = new HashSet<>(attendees);
+    Set<String> allAttendees = new HashSet<>(optionalAttendees);
+    allAttendees.addAll(mandatoryAttendees);
+
+    Collection<TimeRange> possibleTimes = new ArrayList<>();
+
     if (requestDuration > WHOLE_DAY.duration()){
       return possibleTimes;
     }
     
-    if (attendees.size() == 0){
+    if (attendees.size() == 0 && optionalAttendees.size() == 0){
       possibleTimes.add(WHOLE_DAY);
       return possibleTimes;
     }
-    getFreeTimes(events, request);
 
-    return possibleTimes;
+    if (optionalAttendees.size() == 0){
+      possibleTimes = getFreeTimes(events, request, mandatoryAttendees);
+      return possibleTimes;
+    }
+
+    Collection<TimeRange> allAttendeesTimes = getFreeTimes(events, request, allAttendees);
+    Collection<TimeRange> mandatoryTimes = getFreeTimes(events, request, mandatoryAttendees);
+
+    if (allAttendeesTimes.size() >= 1 || attendees.size() == 0){
+      return allAttendeesTimes;
+    }
+
+    return mandatoryTimes;
   }
 
-  public void getFreeTimes(Collection<Event> events, MeetingRequest request) {
-    getConflicts(events, request);
+  public Collection<TimeRange> getFreeTimes(Collection<Event> events, MeetingRequest request, Set<String> attendees) {
+    Collection<TimeRange> availableTimes = new ArrayList<>();
+    ArrayList<TimeRange> conflicts = getConflicts(events, request, attendees);
     conflicts.sort(ORDER_BY_START);
 
     if(conflicts.size() == 0){
-        possibleTimes.add(WHOLE_DAY);
+        availableTimes.add(WHOLE_DAY);
     }
 
     else{
@@ -63,18 +83,19 @@ public final class FindMeetingQuery {
       for(int i = 0; i < conflicts.size(); ++i){
         TimeRange conflict = conflicts.get(i);
         if (conflict.start() - availableStart >= requestDuration){
-          possibleTimes.add(TimeRange.fromStartEnd(availableStart, conflict.start(), false));
+          availableTimes.add(TimeRange.fromStartEnd(availableStart, conflict.start(), false));
         }
         availableStart = conflict.end();
         }
       if (END_OF_DAY - availableStart >= requestDuration){
-        possibleTimes.add(TimeRange.fromStartEnd(availableStart, END_OF_DAY, true));
+        availableTimes.add(TimeRange.fromStartEnd(availableStart, END_OF_DAY, true));
       }
     }
-    return;
+    return availableTimes;
   }
 
-  public void getConflicts(Collection<Event> events, MeetingRequest request) {
+  public ArrayList<TimeRange> getConflicts(Collection<Event> events, MeetingRequest request, Set<String> attendees) {
+    ArrayList<TimeRange> allConflicts = new ArrayList<>();
     for(Event event : events){
       Set<String> overlapAttendees = new HashSet<>(event.getAttendees());
       overlapAttendees.retainAll(attendees);
@@ -82,11 +103,11 @@ public final class FindMeetingQuery {
         allConflicts.add(event.getWhen());
       }
     }
-    mergeOverlaps();
-    return;
+    return mergeOverlaps(allConflicts);
   }
 
-  public void mergeOverlaps(){
+  public ArrayList<TimeRange> mergeOverlaps(ArrayList<TimeRange> allConflicts){
+    ArrayList<TimeRange> conflicts = new ArrayList<>();
     int numConflicts = allConflicts.size();
     allConflicts.sort(ORDER_BY_START);
     ArrayList<Integer> overlappingIndices = new ArrayList<>();
@@ -112,5 +133,6 @@ public final class FindMeetingQuery {
         conflicts.add(currentConflict);
       }
     }
+    return conflicts;
   }
 }
