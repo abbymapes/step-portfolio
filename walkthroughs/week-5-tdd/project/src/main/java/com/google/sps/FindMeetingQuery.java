@@ -29,11 +29,7 @@ public final class FindMeetingQuery {
   public static final Comparator<TimeRange> ORDER_BY_START = TimeRange.ORDER_BY_START;
 
   Collection<TimeRange> possibleTimes = new ArrayList<>();
-  //ArrayList<TimeRange> allConflicts = new ArrayList<>();
-  //ArrayList<TimeRange> conflicts = new ArrayList<>();
   long requestDuration;
-  //Collection<String> attendees;
-  //Collection<String> optionalAttendees;
 
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     requestDuration = request.getDuration();
@@ -49,12 +45,12 @@ public final class FindMeetingQuery {
       return possibleTimes;
     }
     
-    if (attendees.size() == 0 && optionalAttendees.size() == 0){
+    if (attendees.isEmpty() && optionalAttendees.isEmpty()){
       possibleTimes.add(WHOLE_DAY);
       return possibleTimes;
     }
 
-    if (optionalAttendees.size() == 0){
+    if (optionalAttendees.isEmpty()){
       possibleTimes = getFreeTimes(events, request, mandatoryAttendees);
       return possibleTimes;
     }
@@ -62,7 +58,7 @@ public final class FindMeetingQuery {
     Collection<TimeRange> allAttendeesTimes = getFreeTimes(events, request, allAttendees);
     Collection<TimeRange> mandatoryTimes = getFreeTimes(events, request, mandatoryAttendees);
 
-    if (allAttendeesTimes.size() >= 1 || attendees.size() == 0){
+    if (allAttendeesTimes.size() >= 1 || attendees.isEmpty()){
       return allAttendeesTimes;
     }
 
@@ -74,7 +70,7 @@ public final class FindMeetingQuery {
     ArrayList<TimeRange> conflicts = getConflicts(events, request, attendees);
     conflicts.sort(ORDER_BY_START);
 
-    if(conflicts.size() == 0){
+    if(conflicts.isEmpty()){
         availableTimes.add(WHOLE_DAY);
     }
 
